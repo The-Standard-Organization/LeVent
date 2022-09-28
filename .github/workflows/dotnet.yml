@@ -1,25 +1,25 @@
-name: .NET
-
+name: LeVent Build
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - main
   pull_request:
-    branches: [ "master" ]
-
+    branches:
+    - main
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+    - name: Checking out code
+      uses: actions/checkout@v2
+    - name: Installing .NET
+      uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
+        dotnet-version: 7.0.100-rc.1.22431.12
+        include-prerelease: true
+    - name: Restoring Packages
       run: dotnet restore
-    - name: Build
+    - name: Building Project(s)
       run: dotnet build --no-restore
-    - name: Test
+    - name: Running Tests
       run: dotnet test --no-build --verbosity normal
