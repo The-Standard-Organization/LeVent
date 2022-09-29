@@ -2,6 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
 using LeVent.Models.Foundations.Events.Exceptions;
 
 namespace LeVent.Services.Events
@@ -19,6 +20,13 @@ namespace LeVent.Services.Events
             catch (NullEventHandlerException nullEventHandlerException)
             {
                 throw new EventValidationException(nullEventHandlerException);
+            }
+            catch (Exception exception)
+            {
+                var failedEventStorageException = 
+                    new FailedEventStorageException(exception);
+
+                throw new EventDependencyException(failedEventStorageException);
             }
         }
     }
