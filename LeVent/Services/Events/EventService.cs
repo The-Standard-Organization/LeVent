@@ -15,9 +15,7 @@ namespace LeVent.Services.Events
         public EventService(IStorageBroker<T> storageBroker) =>
             this.storageBroker = storageBroker;
 
-        public void AddEventHandler(Func<T, ValueTask> eventHandler)
-        {
-            throw new NotImplementedException();
-        }
+        public void AddEventHandler(Func<T, ValueTask> eventHandler) =>
+            this.storageBroker.InsertEventHandler(eventHandler);
     }
 }
