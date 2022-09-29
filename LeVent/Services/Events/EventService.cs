@@ -16,6 +16,11 @@ namespace LeVent.Services.Events
             this.storageBroker = storageBroker;
 
         public void AddEventHandler(Func<T, ValueTask> eventHandler) =>
+        TryCatch(() =>
+        {
+            ValidateEventHandler(eventHandler);
+
             this.storageBroker.InsertEventHandler(eventHandler);
+        });
     }
 }
