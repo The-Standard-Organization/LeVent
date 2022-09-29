@@ -6,10 +6,10 @@ using Xeptions;
 
 namespace LeVent.Models.Foundations.Events.Exceptions
 {
-    public class EventValidationException : Xeption
+    public class EventDependencyException : Xeption
     {
-        public EventValidationException(Xeption innerException)
-            : base("Event validation error occurred, please fix error and try again. ",
+        public EventDependencyException(Xeption innerException)
+            : base(message: "Event dependency error occurred, contact support.",
                   innerException)
         { }
     }

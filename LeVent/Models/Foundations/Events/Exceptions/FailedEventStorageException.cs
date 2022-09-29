@@ -2,14 +2,15 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
 using Xeptions;
 
 namespace LeVent.Models.Foundations.Events.Exceptions
 {
-    public class EventValidationException : Xeption
+    public class FailedEventStorageException : Xeption
     {
-        public EventValidationException(Xeption innerException)
-            : base("Event validation error occurred, please fix error and try again. ",
+        public FailedEventStorageException(Exception innerException)
+            : base("Failed event storage dependency error ocurred, contact support.",
                   innerException)
         { }
     }
