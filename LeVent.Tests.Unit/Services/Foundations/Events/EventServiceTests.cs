@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
-using LeVent.Services.Events;
+using LeVent.Services.Foundations.Events;
 using Moq;
 using Tynamix.ObjectFiller;
 
-namespace LeVent.Tests.Unit.Services.Events
+namespace LeVent.Tests.Unit.Services.Foundations.Events
 {
     public partial class EventServiceTests
     {

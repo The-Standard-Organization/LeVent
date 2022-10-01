@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LeVent.Services.Events
+namespace LeVent.Services.Foundations.Events
 {
     public interface IEventService<T>
     {
