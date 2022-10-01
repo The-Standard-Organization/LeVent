@@ -29,7 +29,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 broker.RetrieveAllEventHandlers())
                     .Returns(retrievedEventHandlers);
 
-            object randomEvent = new object();
+            var randomEvent = new object();
             object inputEvent = randomEvent;
 
             // when
