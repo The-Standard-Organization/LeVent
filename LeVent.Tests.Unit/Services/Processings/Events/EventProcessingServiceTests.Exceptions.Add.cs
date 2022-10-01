@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using Moq;
 using Xeptions;
@@ -87,6 +88,49 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             // then
             actualEventProcessingDependencyException.Should()
                 .BeEquivalentTo(expectedEventProcessingDependencyException);
+
+            this.eventServiceMock.Verify(service =>
+                service.AddEventHandler(
+                    It.IsAny<Func<object, ValueTask>>()),
+                        Times.Once);
+
+            this.eventServiceMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public void ShouldThrowServiceExceptionOnAddIfServiceErrorOcurrs()
+        {
+            // given
+            var eventHandlerMock =
+                new Mock<Func<object, ValueTask>>();
+
+            Func<object, ValueTask> someEventHandler =
+                eventHandlerMock.Object;
+
+            var serviceException = new Exception();
+
+            var failedEventProcessingServiceException =
+                new FailedEventProcessingServiceException(
+                    serviceException);
+
+            var expectedEventServiceException =
+                new EventProcessingServiceException(
+                    failedEventProcessingServiceException);
+
+            this.eventServiceMock.Setup(service =>
+                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
+                    .Throws(serviceException);
+
+            // when
+            Action addEventHandlerAction = () =>
+                this.eventProcessingService.AddEventHandler(someEventHandler);
+
+            EventProcessingServiceException actualEventProcessingServiceException =
+                Assert.Throws<EventProcessingServiceException>(addEventHandlerAction);
+
+            // then
+            actualEventProcessingServiceException.Should()
+                .BeEquivalentTo(expectedEventServiceException);
 
             this.eventServiceMock.Verify(service =>
                 service.AddEventHandler(
