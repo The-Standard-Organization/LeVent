@@ -12,7 +12,7 @@ namespace LeVent.Brokers.Storages
     {
         private static List<Func<T, ValueTask>> EventHandlers;
 
-        public StorageBroker() => 
+        public StorageBroker() =>
             EventHandlers = new List<Func<T, ValueTask>>();
     }
 }
