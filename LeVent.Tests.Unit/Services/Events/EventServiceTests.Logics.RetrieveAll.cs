@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Force.DeepCloner;
 using Moq;
 using Xunit;
 
@@ -22,10 +21,10 @@ namespace LeVent.Tests.Unit.Services.Events
                 CreateRandomEventHandlers();
 
             List<Func<object, ValueTask>> storageEventHandlers =
-                randomEventHandlers;//
+                randomEventHandlers;
 
             List<Func<object, ValueTask>> expectedEventHandlers =
-                storageEventHandlers.DeepClone();
+                storageEventHandlers;
 
             this.storageBrokerMock.Setup(broker =>
                 broker.SelectAllEventHandlers())
