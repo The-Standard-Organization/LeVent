@@ -3,6 +3,7 @@
 // -------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using LeVent.Services.Foundations.Events;
 
@@ -25,7 +26,13 @@ namespace LeVent.Services.Processings.Events
 
         public async ValueTask PublishEventAsync(T @event)
         {
-            throw new NotImplementedException();
+            List<Func<T, ValueTask>> registeredEvents =
+                this.eventService.RetrieveAllEventHandlers();
+
+            foreach (Func<T, ValueTask> registeredEvent in registeredEvents)
+            {
+                await registeredEvent(@event);
+            }
         }
     }
 }
