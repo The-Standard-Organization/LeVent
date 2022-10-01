@@ -24,7 +24,7 @@ namespace LeVent.Services.Foundations.Events
             this.storageBroker.InsertEventHandler(eventHandler);
         });
 
-        public List<Func<T, ValueTask>> RetrieveAllEventHandlers() => 
+        public List<Func<T, ValueTask>> RetrieveAllEventHandlers() =>
         TryCatch(() => this.storageBroker.SelectAllEventHandlers());
     }
 }

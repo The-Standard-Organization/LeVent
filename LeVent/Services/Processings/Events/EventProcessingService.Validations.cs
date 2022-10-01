@@ -17,5 +17,13 @@ namespace LeVent.Services.Processings.Events
                 throw new NullEventHandlerProcessingException();
             }
         }
+
+        private static void ValidateEvent(T @event)
+        {
+            if (@event is null)
+            {
+                throw new NullEventProcessingException();
+            }
+        }
     }
 }

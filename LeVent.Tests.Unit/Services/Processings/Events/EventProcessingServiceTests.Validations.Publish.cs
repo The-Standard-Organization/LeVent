@@ -1,0 +1,47 @@
+﻿// -------------------------------------------------
+// Copyright (c) PiorSoft, LLC. All rights reserved.
+// -------------------------------------------------
+
+using System.Threading.Tasks;
+using FluentAssertions;
+using LeVent.Models.Processings.Events.Exceptions;
+using Moq;
+using Xunit;
+
+namespace LeVent.Tests.Unit.Services.Foundations.Events
+{
+    public partial class EventProcessingServiceTests
+    {
+        [Fact]
+        public async Task ShouldThrowValidationExceptionOnAddIfEventIsNullAsync()
+        {
+            // given
+            object nullEvent = null;
+
+            var nullEventProcessingException =
+                new NullEventProcessingException();
+
+            var expectedEventProcessingValidationException =
+                new EventProcessingValidationException(
+                    nullEventProcessingException);
+
+            // when
+            ValueTask publishEventTask = this.eventProcessingService
+                .PublishEventAsync(nullEvent);
+
+            EventProcessingValidationException actualEventProcessingValidationException =
+                await Assert.ThrowsAsync<EventProcessingValidationException>(
+                    publishEventTask.AsTask);
+
+            // then
+            actualEventProcessingValidationException.Should()
+                .BeEquivalentTo(expectedEventProcessingValidationException);
+
+            this.eventServiceMock.Verify(broker =>
+                broker.RetrieveAllEventHandlers(),
+                    Times.Never);
+
+            this.eventServiceMock.VerifyNoOtherCalls();
+        }
+    }
+}

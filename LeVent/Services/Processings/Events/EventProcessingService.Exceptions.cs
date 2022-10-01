@@ -3,6 +3,7 @@
 // -------------------------------------------------
 
 using System;
+using System.Threading.Tasks;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using Xeptions;
@@ -12,6 +13,7 @@ namespace LeVent.Services.Processings.Events
     public partial class EventProcessingService<T> : IEventProcessingService<T>
     {
         private delegate void ReturningNothingFunction();
+        private delegate ValueTask ReturningValueTaskFunction();
 
         private void TryCatch(ReturningNothingFunction returningNothingFunction)
         {
@@ -37,6 +39,26 @@ namespace LeVent.Services.Processings.Events
             {
                 throw new EventProcessingDependencyException(
                     eventServiceException.InnerException as Xeption);
+            }
+            catch (Exception exception)
+            {
+                var failedEventProcessingServiceException =
+                    new FailedEventProcessingServiceException(exception);
+
+                throw new EventProcessingServiceException(
+                    failedEventProcessingServiceException);
+            }
+        }
+
+        private async ValueTask TryCatch(ReturningValueTaskFunction returningValueTaskFunction)
+        {
+            try
+            {
+                await returningValueTaskFunction();
+            }
+            catch (NullEventProcessingException nullEventProcessingException)
+            {
+                throw new EventProcessingValidationException(nullEventProcessingException);
             }
             catch (Exception exception)
             {
