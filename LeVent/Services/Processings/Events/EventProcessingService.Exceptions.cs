@@ -2,6 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using Xeptions;
@@ -36,6 +37,14 @@ namespace LeVent.Services.Processings.Events
             {
                 throw new EventProcessingDependencyException(
                     eventServiceException.InnerException as Xeption);
+            }
+            catch (Exception exception)
+            {
+                var failedEventProcessingServiceException =
+                    new FailedEventProcessingServiceException(exception);
+
+                throw new EventProcessingServiceException(
+                    failedEventProcessingServiceException);
             }
         }
     }
