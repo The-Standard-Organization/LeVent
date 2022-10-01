@@ -22,7 +22,7 @@ namespace LeVent.Tests.Unit.Services.Events
                 CreateRandomEventHandlers();
 
             List<Func<object, ValueTask>> storageEventHandlers =
-                randomEventHandlers;
+                randomEventHandlers;//
 
             List<Func<object, ValueTask>> expectedEventHandlers =
                 storageEventHandlers.DeepClone();
