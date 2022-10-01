@@ -2,9 +2,14 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
 using LeVent.Services.Events;
 using Moq;
+using Tynamix.ObjectFiller;
 
 namespace LeVent.Tests.Unit.Services.Events
 {
@@ -20,5 +25,17 @@ namespace LeVent.Tests.Unit.Services.Events
             this.eventService = new EventService<object>(
                 storageBroker: this.storageBrokerMock.Object);
         }
+
+        private static List<Func<object, ValueTask>> CreateRandomEventHandlers()
+        {
+            int randomCount = GetRandomNumber();
+
+            return Enumerable.Range(start: 0, count: randomCount)
+                .Select(_ => new Mock<Func<object, ValueTask>>().Object)
+                    .ToList();
+        }
+
+        private static int GetRandomNumber() =>
+            new IntRange(min: 2, max: 10).GetValue();
     }
 }
