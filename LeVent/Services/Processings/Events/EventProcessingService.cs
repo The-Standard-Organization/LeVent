@@ -20,7 +20,7 @@ namespace LeVent.Services.Processings.Events
 
         public void AddEventHandler(Func<T, ValueTask> eventHandler)
         {
-            throw new NotImplementedException();
+            this.eventService.AddEventHandler(eventHandler);
         }
     }
 }
