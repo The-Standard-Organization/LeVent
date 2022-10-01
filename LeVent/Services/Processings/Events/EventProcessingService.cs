@@ -24,8 +24,11 @@ namespace LeVent.Services.Processings.Events
             this.eventService.AddEventHandler(eventHandler);
         });
 
-        public async ValueTask PublishEventAsync(T @event)
+        public ValueTask PublishEventAsync(T @event) =>
+        TryCatch(async () =>
         {
+            ValidateEvent(@event);
+
             List<Func<T, ValueTask>> registeredEvents =
                 this.eventService.RetrieveAllEventHandlers();
 
@@ -33,6 +36,6 @@ namespace LeVent.Services.Processings.Events
             {
                 await registeredEvent(@event);
             }
-        }
+        });
     }
 }
