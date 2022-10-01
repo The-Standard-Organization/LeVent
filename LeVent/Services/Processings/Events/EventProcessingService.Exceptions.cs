@@ -60,6 +60,14 @@ namespace LeVent.Services.Processings.Events
             {
                 throw new EventProcessingValidationException(nullEventProcessingException);
             }
+            catch (Exception exception)
+            {
+                var failedEventProcessingServiceException =
+                    new FailedEventProcessingServiceException(exception);
+
+                throw new EventProcessingServiceException(
+                    failedEventProcessingServiceException);
+            }
         }
     }
 }
