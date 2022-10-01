@@ -3,6 +3,7 @@
 // -------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
 
@@ -22,5 +23,8 @@ namespace LeVent.Services.Events
 
             this.storageBroker.InsertEventHandler(eventHandler);
         });
+
+        public List<Func<T, ValueTask>> RetrieveAllEventHandlers() => 
+        TryCatch(() => this.storageBroker.SelectAllEventHandlers());
     }
 }

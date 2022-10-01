@@ -3,14 +3,16 @@
 // -------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using LeVent.Models.Foundations.Events.Exceptions;
-using Xeptions;
 
 namespace LeVent.Services.Events
 {
-    public partial class EventService<T> : IEventService<T>
+    public partial class EventService<T>
     {
         private delegate void ReturningNothingFunction();
+        private delegate List<Func<T, ValueTask>> ReturningFuncsFunction();
 
         private void TryCatch(ReturningNothingFunction returningNothingFunction)
         {
@@ -21,6 +23,21 @@ namespace LeVent.Services.Events
             catch (NullEventHandlerException nullEventHandlerException)
             {
                 throw new EventValidationException(nullEventHandlerException);
+            }
+            catch (Exception exception)
+            {
+                var failedEventServiceException =
+                    new FailedEventServiceException(exception);
+
+                throw new EventServiceException(failedEventServiceException);
+            }
+        }
+
+        private List<Func<T, ValueTask>> TryCatch(ReturningFuncsFunction returningFuncsFunction)
+        {
+            try
+            {
+                return returningFuncsFunction();
             }
             catch (Exception exception)
             {
