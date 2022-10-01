@@ -10,11 +10,11 @@ using LeVent.Services.Processings.Events;
 
 namespace LeVent.Clients
 {
-    public class LeventClient<T> : ILeventClient<T>
+    public class LeVentClient<T> : ILeVentClient<T>
     {
         private readonly IEventProcessingService<T> eventProcessingService;
 
-        public LeventClient()
+        public LeVentClient()
         {
             IStorageBroker<T> storageBroker = 
                 new StorageBroker<T>();

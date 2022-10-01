@@ -2,14 +2,13 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
 using System.Threading.Tasks;
+using LeVent.Tests.Manual.Models.Students;
 
-namespace LeVent.Clients
+namespace LeVent.Tests.Manual.Services.Orchestrations.Students
 {
-    public interface ILeVentClient<T>
+    public interface IStudentOrchestrationService
     {
-        void RegisterEventHandler(Func<T, ValueTask> eventHandler);
-        ValueTask PublishEventAsync(T @event);
+        ValueTask AddStudentAsync(Student student);
     }
 }

@@ -20,7 +20,7 @@ namespace LeVent.Tests.Acceptance
         {
             // given
             string myEvent = "nothing";
-            var leVentClient = new LeventClient<string>();
+            var leVentClient = new LeVentClient<string>();
 
             // when
             leVentClient.RegisterEventHandler(DoSomethingWithEvent);
