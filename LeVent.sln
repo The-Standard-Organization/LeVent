@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent", "LeVent\LeVent.csproj", "{9C076A74-2175-4B66-9F6F-D4D80DE44C04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent", "LeVent\LeVent.csproj", "{9C076A74-2175-4B66-9F6F-D4D80DE44C04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Tests.Unit", "LeVent.Tests.Unit\LeVent.Tests.Unit.csproj", "{E216BF0A-9A28-4589-8320-A0E77CBA83B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Tests.Unit", "LeVent.Tests.Unit\LeVent.Tests.Unit.csproj", "{E216BF0A-9A28-4589-8320-A0E77CBA83B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Tests.Acceptance", "LeVent.Tests.Acceptance\LeVent.Tests.Acceptance.csproj", "{901FA460-4D76-468D-A08D-BA2C31019B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Tests.Acceptance", "LeVent.Tests.Acceptance\LeVent.Tests.Acceptance.csproj", "{901FA460-4D76-468D-A08D-BA2C31019B20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Infrastructure.Build", "LeVent.Infrastructure.Build\LeVent.Infrastructure.Build.csproj", "{784AAEBF-3AAD-4288-A5E6-8541C3E49BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Infrastructure.Build", "LeVent.Infrastructure.Build\LeVent.Infrastructure.Build.csproj", "{784AAEBF-3AAD-4288-A5E6-8541C3E49BF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

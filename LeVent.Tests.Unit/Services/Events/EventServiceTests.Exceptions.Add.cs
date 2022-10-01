@@ -14,7 +14,7 @@ namespace LeVent.Tests.Unit.Services.Events
     public partial class EventServiceTests
     {
         [Fact]
-        public void ShouldThrowDependencyExceptionOnAddIfDependencyErrorOcurrs()
+        public void ShouldThrowServiceExceptionOnAddIfServiceErrorOcurrs()
         {
             // given
             var eventHandlerMock =
@@ -25,13 +25,13 @@ namespace LeVent.Tests.Unit.Services.Events
 
             var storageException = new Exception();
 
-            var failedEventStorageException = 
-                new FailedEventStorageException(
+            var failedEventServiceException =
+                new FailedEventServiceException(
                     storageException);
 
-            var expectedEventDependencyException =
-                new EventDependencyException(
-                    failedEventStorageException);
+            var expectedEventServiceException =
+                new EventServiceException(
+                    failedEventServiceException);
 
             this.storageBrokerMock.Setup(broker =>
                 broker.InsertEventHandler(It.IsAny<Func<object, ValueTask>>()))
@@ -41,16 +41,17 @@ namespace LeVent.Tests.Unit.Services.Events
             Action addEventHandlerAction = () =>
                 this.eventService.AddEventHandler(someEventHandler);
 
-            EventDependencyException actualEventDependencyException =
-                Assert.Throws<EventDependencyException>(addEventHandlerAction);
+            EventServiceException actualEventServiceException =
+                Assert.Throws<EventServiceException>(addEventHandlerAction);
 
             // then
-            actualEventDependencyException.Should()
-                .BeEquivalentTo(expectedEventDependencyException);
+            actualEventServiceException.Should()
+                .BeEquivalentTo(expectedEventServiceException);
 
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertEventHandler(It.IsAny<Func<object, ValueTask>>()),
-                    Times.Once);
+                broker.InsertEventHandler(
+                    It.IsAny<Func<object, ValueTask>>()),
+                        Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
         }

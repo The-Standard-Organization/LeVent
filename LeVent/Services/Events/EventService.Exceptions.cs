@@ -4,6 +4,7 @@
 
 using System;
 using LeVent.Models.Foundations.Events.Exceptions;
+using Xeptions;
 
 namespace LeVent.Services.Events
 {
@@ -23,10 +24,10 @@ namespace LeVent.Services.Events
             }
             catch (Exception exception)
             {
-                var failedEventStorageException = 
-                    new FailedEventStorageException(exception);
+                var failedEventServiceException =
+                    new FailedEventServiceException(exception);
 
-                throw new EventDependencyException(failedEventStorageException);
+                throw new EventServiceException(failedEventServiceException);
             }
         }
     }
