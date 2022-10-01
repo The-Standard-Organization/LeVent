@@ -4,6 +4,8 @@
 
 using System;
 using System.Threading.Tasks;
+using LeVent.Brokers.Storages;
+using LeVent.Services.Foundations.Events;
 using LeVent.Services.Processings.Events;
 
 namespace LeVent.Clients
@@ -12,8 +14,17 @@ namespace LeVent.Clients
     {
         private readonly IEventProcessingService<T> eventProcessingService;
 
-        public LeventClient(IEventProcessingService<T> eventProcessingService) =>
-            this.eventProcessingService = eventProcessingService;
+        public LeventClient()
+        {
+            IStorageBroker<T> storageBroker = 
+                new StorageBroker<T>();
+            
+            IEventService<T> eventService = 
+                new EventService<T>(storageBroker);
+            
+            this.eventProcessingService = 
+                new EventProcessingService<T>(eventService);
+        }
 
         public async ValueTask PublishEventAsync(T @event) =>
             await this.eventProcessingService.PublishEventAsync(@event);
