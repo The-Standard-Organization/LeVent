@@ -11,6 +11,7 @@ using LeVent.Services.Foundations.Events;
 using LeVent.Services.Processings.Events;
 using Moq;
 using Tynamix.ObjectFiller;
+using Xeptions;
 using Xunit;
 
 namespace LeVent.Tests.Unit.Services.Foundations.Events
@@ -36,6 +37,18 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             return new TheoryData<Exception>
             {
                 new EventValidationException(nullEventHandlerException)
+            };
+        }
+
+        public static TheoryData DependencyExceptions()
+        {
+            var someInnerException =
+                new Xeption();
+
+            return new TheoryData<Exception>
+            {
+                new EventDependencyException(someInnerException),
+                new EventServiceException(someInnerException)
             };
         }
 

@@ -26,8 +26,6 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             Func<object, ValueTask> someEventHandler =
                 eventHandlerMock.Object;
 
-            var storageException = new Exception();
-
             var expectedEventProcessingDependencyValidationException =
                 new EventProcessingDependencyValidationException(
                     dependencyValidationException.InnerException as Xeption);
@@ -48,6 +46,47 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             // then
             actualEventProcessingDependencyValidationException.Should()
                 .BeEquivalentTo(expectedEventProcessingDependencyValidationException);
+
+            this.eventServiceMock.Verify(service =>
+                service.AddEventHandler(
+                    It.IsAny<Func<object, ValueTask>>()),
+                        Times.Once);
+
+            this.eventServiceMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [MemberData(nameof(DependencyExceptions))]
+        public void ShouldThrowDependencyExceptionOnAddIfDependencyErrorOccurs(
+            Xeption dependencyException)
+        {
+            // given
+            var eventHandlerMock =
+                new Mock<Func<object, ValueTask>>();
+
+            Func<object, ValueTask> someEventHandler =
+                eventHandlerMock.Object;
+
+            var expectedEventProcessingDependencyException =
+                new EventProcessingDependencyException(
+                    dependencyException.InnerException as Xeption);
+
+            this.eventServiceMock.Setup(service =>
+                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
+                    .Throws(dependencyException);
+
+            // when
+            Action addEventHandlerAction = () =>
+                this.eventProcessingService.AddEventHandler(someEventHandler);
+
+            EventProcessingDependencyException
+                actualEventProcessingDependencyException =
+                    Assert.Throws<EventProcessingDependencyException>(
+                        addEventHandlerAction);
+
+            // then
+            actualEventProcessingDependencyException.Should()
+                .BeEquivalentTo(expectedEventProcessingDependencyException);
 
             this.eventServiceMock.Verify(service =>
                 service.AddEventHandler(
