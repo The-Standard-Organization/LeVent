@@ -52,12 +52,12 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             };
         }
 
-        private static List<Func<object, ValueTask>> CreateRandomEventHandlers()
+        private static List<Mock<Func<object, ValueTask>>> CreateRandomEventHandlerMocks()
         {
             int randomCount = GetRandomNumber();
 
             return Enumerable.Range(start: 0, count: randomCount)
-                .Select(_ => new Mock<Func<object, ValueTask>>().Object)
+                .Select(_ => new Mock<Func<object, ValueTask>>())
                     .ToList();
         }
 

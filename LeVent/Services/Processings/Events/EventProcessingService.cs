@@ -15,12 +15,17 @@ namespace LeVent.Services.Processings.Events
         public EventProcessingService(IEventService<T> eventService) =>
             this.eventService = eventService;
 
-        public void AddEventHandler(Func<T, ValueTask> eventHandler) => 
+        public void AddEventHandler(Func<T, ValueTask> eventHandler) =>
         TryCatch(() =>
         {
             ValidateEventHandler(eventHandler);
 
             this.eventService.AddEventHandler(eventHandler);
         });
+
+        public async ValueTask PublishEventAsync(T @event)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
