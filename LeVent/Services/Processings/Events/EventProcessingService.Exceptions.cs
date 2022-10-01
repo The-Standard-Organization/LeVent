@@ -27,6 +27,16 @@ namespace LeVent.Services.Processings.Events
                 throw new EventProcessingDependencyValidationException(
                     eventValidationException.InnerException as Xeption);
             }
+            catch (EventDependencyException eventDependencyException)
+            {
+                throw new EventProcessingDependencyException(
+                    eventDependencyException.InnerException as Xeption);
+            }
+            catch (EventServiceException eventServiceException)
+            {
+                throw new EventProcessingDependencyException(
+                    eventServiceException.InnerException as Xeption);
+            }
         }
     }
 }
