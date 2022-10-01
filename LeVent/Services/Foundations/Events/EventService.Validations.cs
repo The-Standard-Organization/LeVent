@@ -6,7 +6,7 @@ using System;
 using System.Threading.Tasks;
 using LeVent.Models.Foundations.Events.Exceptions;
 
-namespace LeVent.Services.Events
+namespace LeVent.Services.Foundations.Events
 {
     public partial class EventService<T> : IEventService<T>
     {

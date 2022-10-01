@@ -9,7 +9,7 @@ using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
 using Xunit;
 
-namespace LeVent.Tests.Unit.Services.Events
+namespace LeVent.Tests.Unit.Services.Foundations.Events
 {
     public partial class EventServiceTests
     {

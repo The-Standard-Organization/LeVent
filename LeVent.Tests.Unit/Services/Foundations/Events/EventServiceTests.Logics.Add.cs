@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Moq;
 using Xunit;
 
-namespace LeVent.Tests.Unit.Services.Events
+namespace LeVent.Tests.Unit.Services.Foundations.Events
 {
     public partial class EventServiceTests
     {
