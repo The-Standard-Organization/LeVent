@@ -19,5 +19,7 @@ namespace LeVent.Services.Foundations.EventRegistrations
         {
             this.storageBroker.InsertEventHandlerRegistration(eventHandlerRegistration);
         }
+
+
     }
 }
