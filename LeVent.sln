@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Tests.Acceptance", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Infrastructure.Build", "LeVent.Infrastructure.Build\LeVent.Infrastructure.Build.csproj", "{784AAEBF-3AAD-4288-A5E6-8541C3E49BF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Tests.Manual", "LeVent.Tests.Manual\LeVent.Tests.Manual.csproj", "{34A836CA-49B6-4F1A-83AB-152931169BC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Tests.Manual", "LeVent.Tests.Manual\LeVent.Tests.Manual.csproj", "{34A836CA-49B6-4F1A-83AB-152931169BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

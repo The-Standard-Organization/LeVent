@@ -2,8 +2,8 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System.Threading.Tasks;
 using System;
+using System.Threading.Tasks;
 using LeVent.Clients;
 using LeVent.Tests.Manual.Models.Students;
 
