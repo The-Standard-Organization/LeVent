@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 
 namespace LeVent.Brokers.Storages
 {

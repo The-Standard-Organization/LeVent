@@ -2,7 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
 using Xunit;
 

@@ -4,7 +4,8 @@
 
 using System;
 using FluentAssertions;
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
+using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
 using Xunit;
@@ -18,23 +19,24 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
         {
             // given
             EventHandlerRegistration<object> nullEventHandler = null;
-            var nullEventHandlerException = new NullEventHandlerException();
+            var nullEventHandlerException = new NullEventHandlerRegistrationException();
 
-            var expectedEventValidationException =
-                new EventValidationException(nullEventHandlerException);
+            var expectedEventHandlerRegistrationValidationException =
+                new EventHandlerRegistrationValidationException(nullEventHandlerException);
 
             // when
             Action addEventHandlerRegistrationAction = () =>
                 this.eventHandlerRegistrationService.AddEventHandlerRegistation(
                     nullEventHandler);
 
-            EventValidationException actualEventValidationException =
-                Assert.Throws<EventValidationException>(
-                    addEventHandlerRegistrationAction);
+            EventHandlerRegistrationValidationException 
+                actualEventHandlerRegistrationValidationException =
+                    Assert.Throws<EventHandlerRegistrationValidationException>(
+                        addEventHandlerRegistrationAction);
 
             // then
-            actualEventValidationException.Should()
-                .BeEquivalentTo(expectedEventValidationException);
+            actualEventHandlerRegistrationValidationException.Should()
+                .BeEquivalentTo(expectedEventHandlerRegistrationValidationException);
 
             this.storageBrokerMock.Verify(broker =>
                 broker.InsertEventHandlerRegistration(

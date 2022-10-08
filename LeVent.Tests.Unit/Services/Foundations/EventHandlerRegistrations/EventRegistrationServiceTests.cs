@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
 using Moq;
 using Tynamix.ObjectFiller;
