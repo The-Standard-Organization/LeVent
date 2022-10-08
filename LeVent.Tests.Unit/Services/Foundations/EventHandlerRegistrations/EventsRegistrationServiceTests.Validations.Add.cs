@@ -6,7 +6,6 @@ using System;
 using FluentAssertions;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
-using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
 using Xunit;
 
@@ -29,7 +28,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
                 this.eventHandlerRegistrationService.AddEventHandlerRegistation(
                     nullEventHandler);
 
-            EventHandlerRegistrationValidationException 
+            EventHandlerRegistrationValidationException
                 actualEventHandlerRegistrationValidationException =
                     Assert.Throws<EventHandlerRegistrationValidationException>(
                         addEventHandlerRegistrationAction);

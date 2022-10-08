@@ -26,8 +26,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
 
             // then
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertEventHandlerRegistration(inputEventHandlerRegistration),
-                    Times.Once);
+                broker.InsertEventHandlerRegistration(
+                    inputEventHandlerRegistration),
+                        Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
         }

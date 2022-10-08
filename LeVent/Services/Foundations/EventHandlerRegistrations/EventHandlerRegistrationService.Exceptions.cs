@@ -21,6 +21,11 @@ namespace LeVent.Services.Foundations.EventRegistrations
                 throw new EventHandlerRegistrationValidationException(
                     nullEventHandlerRegistrationException);
             }
+            catch (InvalidEventHandlerRegistrationException invalidEventHandlerRegistrationException)
+            {
+                throw new EventHandlerRegistrationValidationException(
+                    invalidEventHandlerRegistrationException);
+            }
         }
     }
 }
