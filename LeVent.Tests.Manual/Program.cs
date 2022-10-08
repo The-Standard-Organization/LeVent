@@ -28,7 +28,7 @@ namespace LeVent.Tests.Manual
             var studentService = new StudentService();
             var studentLibraryService = new StudentLibraryService();
             var studentEventService = new StudentEventService(eventBroker);
-            
+
             var studentLibraryOrchestrationService =
                 new StudentLibraryOrchestrationService(
                     studentEventService,
