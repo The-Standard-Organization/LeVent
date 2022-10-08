@@ -17,7 +17,7 @@ namespace LeVent.Services.Foundations.EventRegistrations
 
         public void AddEventHandlerRegistation(EventHandlerRegistration<T> eventHandlerRegistration)
         {
-            throw new NotImplementedException();
+            this.storageBroker.InsertEventHandlerRegistration(eventHandlerRegistration);
         }
     }
 }
