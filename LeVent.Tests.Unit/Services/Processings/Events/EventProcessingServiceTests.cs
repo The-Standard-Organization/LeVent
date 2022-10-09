@@ -86,5 +86,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
         private static int GetRandomNumber() =>
             new IntRange(min: 2, max: 10).GetValue();
+
+        private static string GetRandomEventName() =>
+            new MnemonicString().GetValue();
     }
 }
