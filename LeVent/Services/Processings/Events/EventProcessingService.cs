@@ -49,7 +49,7 @@ namespace LeVent.Services.Processings.Events
                 this.eventHandlerRegistrationService
                     .RetrieveAllEventHandlerRegistrations();
 
-            List<Func<T, ValueTask>> eventHandlers = 
+            List<Func<T, ValueTask>> eventHandlers =
                 registrations.Where(registration =>
                     registration.EventName == eventName)
                         .Select(registration =>
