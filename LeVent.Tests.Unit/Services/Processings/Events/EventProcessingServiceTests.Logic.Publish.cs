@@ -26,8 +26,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             List<EventHandlerRegistration<object>> retrievedEventHandlerRegistrations =
                 randomEventHandlerRegistrations;
 
-            this.eventHandlerRegistrationServiceMock.Setup(broker =>
-                broker.RetrieveAllEventHandlerRegistrations())
+            this.eventHandlerRegistrationServiceMock.Setup(service =>
+                service.RetrieveAllEventHandlerRegistrations())
                     .Returns(retrievedEventHandlerRegistrations);
 
             var randomEvent = new object();
