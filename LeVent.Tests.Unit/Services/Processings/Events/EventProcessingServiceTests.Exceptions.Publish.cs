@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
 using Xunit;
@@ -28,8 +29,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 new EventProcessingServiceException(
                     failedEventProcessingServiceException);
 
-            this.eventServiceMock.Setup(service =>
-                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
+            this.eventHandlerRegistrationServiceMock.Setup(service =>
+                service.RetrieveAllEventHandlerRegistrations())
                     .Throws(serviceException);
 
             // when
@@ -44,8 +45,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             actualEventProcessingServiceException.Should()
                 .BeEquivalentTo(expectedEventServiceException);
 
-            this.eventServiceMock.Verify(service =>
-                service.RetrieveAllEventHandlers(),
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.RetrieveAllEventHandlerRegistrations(),
                     Times.Once);
 
             this.eventServiceMock.VerifyNoOtherCalls();
