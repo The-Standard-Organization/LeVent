@@ -4,6 +4,7 @@
 
 using System;
 using System.Threading.Tasks;
+using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using Xeptions;
@@ -25,10 +26,10 @@ namespace LeVent.Services.Processings.Events
             {
                 throw new EventProcessingValidationException(nullEventHandlerProcessingException);
             }
-            catch (EventValidationException eventValidationException)
+            catch (EventHandlerRegistrationValidationException eventHandlerRegistrationValidationException)
             {
                 throw new EventProcessingDependencyValidationException(
-                    eventValidationException.InnerException as Xeption);
+                    eventHandlerRegistrationValidationException.InnerException as Xeption);
             }
             catch (EventDependencyException eventDependencyException)
             {

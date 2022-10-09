@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using Moq;
@@ -31,9 +32,10 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 new EventProcessingDependencyValidationException(
                     dependencyValidationException.InnerException as Xeption);
 
-            this.eventServiceMock.Setup(service =>
-                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
-                    .Throws(dependencyValidationException);
+            this.eventHandlerRegistrationServiceMock.Setup(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()))
+                        .Throws(dependencyValidationException);
 
             // when
             Action addEventHandlerAction = () =>
@@ -48,9 +50,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             actualEventProcessingDependencyValidationException.Should()
                 .BeEquivalentTo(expectedEventProcessingDependencyValidationException);
 
-            this.eventServiceMock.Verify(service =>
-                service.AddEventHandler(
-                    It.IsAny<Func<object, ValueTask>>()),
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
             this.eventServiceMock.VerifyNoOtherCalls();
@@ -72,9 +74,10 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 new EventProcessingDependencyException(
                     dependencyException.InnerException as Xeption);
 
-            this.eventServiceMock.Setup(service =>
-                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
-                    .Throws(dependencyException);
+            this.eventHandlerRegistrationServiceMock.Setup(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()))
+                        .Throws(dependencyException);
 
             // when
             Action addEventHandlerAction = () =>
@@ -89,9 +92,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             actualEventProcessingDependencyException.Should()
                 .BeEquivalentTo(expectedEventProcessingDependencyException);
 
-            this.eventServiceMock.Verify(service =>
-                service.AddEventHandler(
-                    It.IsAny<Func<object, ValueTask>>()),
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
             this.eventServiceMock.VerifyNoOtherCalls();
@@ -117,9 +120,10 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 new EventProcessingServiceException(
                     failedEventProcessingServiceException);
 
-            this.eventServiceMock.Setup(service =>
-                service.AddEventHandler(It.IsAny<Func<object, ValueTask>>()))
-                    .Throws(serviceException);
+            this.eventHandlerRegistrationServiceMock.Setup(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()))
+                        .Throws(serviceException);
 
             // when
             Action addEventHandlerAction = () =>
@@ -132,9 +136,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             actualEventProcessingServiceException.Should()
                 .BeEquivalentTo(expectedEventServiceException);
 
-            this.eventServiceMock.Verify(service =>
-                service.AddEventHandler(
-                    It.IsAny<Func<object, ValueTask>>()),
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.AddEventHandlerRegistation(
+                    It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
             this.eventServiceMock.VerifyNoOtherCalls();

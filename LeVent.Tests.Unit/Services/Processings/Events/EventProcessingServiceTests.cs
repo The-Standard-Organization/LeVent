@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using KellermanSoftware.CompareNetObjects;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
+using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Services.Foundations.EventRegistrations;
 using LeVent.Services.Foundations.Events;
@@ -45,12 +46,13 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
         public static TheoryData DependencyValidationExceptions()
         {
-            var nullEventHandlerException =
-                new NullEventHandlerException();
+            var nullEventHandlerRegistrationException =
+                new NullEventHandlerRegistrationException();
 
             return new TheoryData<Exception>
             {
-                new EventValidationException(nullEventHandlerException)
+                new EventHandlerRegistrationValidationException(
+                    nullEventHandlerRegistrationException)
             };
         }
 
