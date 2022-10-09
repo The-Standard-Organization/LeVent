@@ -27,7 +27,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
                 storageBroker: this.storageBrokerMock.Object);
         }
 
-        private static List<EventHandlerRegistration<object>> CreateRandomEventHandlerRegistrationHandlers() =>
+        private static List<EventHandlerRegistration<object>> CreateRandomEventHandlerRegistrations() =>
             CreateEventHandlerRegistrationFiller().Create(count: GetRandomNumber()).ToList();
 
         private static EventHandlerRegistration<object> CreateRandomEventHandlerRegistration() =>

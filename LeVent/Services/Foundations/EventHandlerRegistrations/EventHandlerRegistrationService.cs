@@ -2,6 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System.Collections.Generic;
 using LeVent.Brokers.Storages;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 
@@ -21,5 +22,10 @@ namespace LeVent.Services.Foundations.EventRegistrations
 
             this.storageBroker.InsertEventHandlerRegistration(eventHandlerRegistration);
         });
+
+        public List<EventHandlerRegistration<T>> RetrieveAllEventHandlerRegistrations()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
