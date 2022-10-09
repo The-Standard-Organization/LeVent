@@ -10,7 +10,7 @@ using Xunit;
 
 namespace LeVent.Tests.Acceptance
 {
-    public class DeleteMe
+    public class LeVentClientTests
     {
         private static List<string> eventResults =
             new List<string>();
