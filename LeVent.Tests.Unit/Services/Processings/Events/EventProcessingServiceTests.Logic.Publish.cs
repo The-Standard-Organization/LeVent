@@ -4,8 +4,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
 using Xunit;
 
@@ -14,20 +14,21 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public async Task ShouldPublishEventAsync()
+        public async Task ShouldPublishEventWithoutEventNameAsync()
         {
             // given
             List<Mock<Func<object, ValueTask>>> randomEventHandlerMocks =
                 CreateRandomEventHandlerMocks();
 
-            List<Func<object, ValueTask>> retrievedEventHandlers =
-                randomEventHandlerMocks.Select(handlerMock =>
-                    handlerMock.Object)
-                        .ToList();
+            List<EventHandlerRegistration<object>> randomEventHandlerRegistrations =
+                CreateEventHandlerRegistrationsFromMocks(randomEventHandlerMocks);
 
-            this.eventServiceMock.Setup(broker =>
-                broker.RetrieveAllEventHandlers())
-                    .Returns(retrievedEventHandlers);
+            List<EventHandlerRegistration<object>> retrievedEventHandlerRegistrations =
+                randomEventHandlerRegistrations;
+
+            this.eventHandlerRegistrationServiceMock.Setup(broker =>
+                broker.RetrieveAllEventHandlerRegistrations())
+                    .Returns(retrievedEventHandlerRegistrations);
 
             var randomEvent = new object();
             object inputEvent = randomEvent;
@@ -41,11 +42,11 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                     eventHandler(inputEvent),
                         Times.Once));
 
-            this.eventServiceMock.Verify(service =>
-                service.RetrieveAllEventHandlers(),
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.RetrieveAllEventHandlerRegistrations(),
                     Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

@@ -32,13 +32,13 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         {
             this.eventServiceMock =
                 new Mock<IEventService<object>>();
-            
+
             this.eventHandlerRegistrationServiceMock =
                 new Mock<IEventHandlerRegistrationService<object>>();
-            
+
             this.compareLogic = new CompareLogic();
 
-            this.eventProcessingService = 
+            this.eventProcessingService =
                 new EventProcessingService<object>(
                     eventService: this.eventServiceMock.Object,
                     eventHandlerRegistrationService: this.eventHandlerRegistrationServiceMock.Object);
@@ -67,6 +67,20 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             };
         }
 
+        private static List<EventHandlerRegistration<object>> CreateEventHandlerRegistrationsFromMocks(
+            List<Mock<Func<object, ValueTask>>> eventHandlerMocks,
+            string eventName = null)
+        {
+            return eventHandlerMocks.Select(eventHandlerMock =>
+            {
+                return new EventHandlerRegistration<object>
+                {
+                    EventHandler = eventHandlerMock.Object,
+                    EventName = eventName
+                };
+            }).ToList();
+        }
+
         private Expression<Func<EventHandlerRegistration<object>, bool>> SameEventHandlerRegistrationAs(
             EventHandlerRegistration<object> expectedEventHandlerRegistration)
         {
@@ -89,5 +103,16 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
         private static string GetRandomEventName() =>
             new MnemonicString().GetValue();
+
+        private static Filler<EventHandlerRegistration<object>> CreateEventHandlerRegistrationFiller()
+        {
+            var filler = new Filler<EventHandlerRegistration<object>>();
+
+            filler.Setup()
+                .OnProperty(registrationHandler => registrationHandler.EventHandler)
+                    .Use(new Mock<Func<object, ValueTask>>().Object);
+
+            return filler;
+        }
     }
 }

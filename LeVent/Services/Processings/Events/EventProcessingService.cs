@@ -39,7 +39,7 @@ namespace LeVent.Services.Processings.Events
                 eventHandlerRegistration);
         });
 
-        public ValueTask PublishEventAsync(T @event) =>
+        public ValueTask PublishEventAsync(T @event, string eventName = null) =>
         TryCatch(async () =>
         {
             ValidateEvent(@event);
