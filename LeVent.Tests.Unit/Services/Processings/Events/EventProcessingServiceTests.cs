@@ -63,8 +63,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             return new TheoryData<Exception>
             {
-                new EventDependencyException(someInnerException),
-                new EventServiceException(someInnerException)
+                new EventHandlerRegistrationServiceException(someInnerException)
             };
         }
 
