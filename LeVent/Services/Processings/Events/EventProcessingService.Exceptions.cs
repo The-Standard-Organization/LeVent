@@ -31,15 +31,10 @@ namespace LeVent.Services.Processings.Events
                 throw new EventProcessingDependencyValidationException(
                     eventHandlerRegistrationValidationException.InnerException as Xeption);
             }
-            catch (EventDependencyException eventDependencyException)
+            catch (EventHandlerRegistrationServiceException eventHandlerRegistrationServiceException)
             {
                 throw new EventProcessingDependencyException(
-                    eventDependencyException.InnerException as Xeption);
-            }
-            catch (EventServiceException eventServiceException)
-            {
-                throw new EventProcessingDependencyException(
-                    eventServiceException.InnerException as Xeption);
+                    eventHandlerRegistrationServiceException.InnerException as Xeption);
             }
             catch (Exception exception)
             {
