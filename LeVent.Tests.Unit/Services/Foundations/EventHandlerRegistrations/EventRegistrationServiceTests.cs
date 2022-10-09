@@ -2,10 +2,12 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
 using Moq;
 using Tynamix.ObjectFiller;
@@ -37,6 +39,10 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
         private static Filler<EventHandlerRegistration<object>> CreateEventHandlerRegistrationFiller()
         {
             var filler = new Filler<EventHandlerRegistration<object>>();
+
+            filler.Setup()
+                .OnProperty(registrationHandler => registrationHandler.EventHandler)
+                    .Use(new Mock<Func<object, ValueTask>>().Object);
 
             return filler;
         }

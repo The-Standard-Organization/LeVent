@@ -5,7 +5,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace LeVent.Models.Foundations.Events
+namespace LeVent.Models.Foundations.EventHandlerRegistrations
 {
     public class EventHandlerRegistration<T>
     {

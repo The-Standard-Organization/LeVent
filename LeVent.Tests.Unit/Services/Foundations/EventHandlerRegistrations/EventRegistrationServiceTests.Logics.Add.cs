@@ -2,7 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using LeVent.Models.Foundations.Events;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
 using Xunit;
 
@@ -26,8 +26,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
 
             // then
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertEventHandlerRegistration(inputEventHandlerRegistration),
-                    Times.Once);
+                broker.InsertEventHandlerRegistration(
+                    inputEventHandlerRegistration),
+                        Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
         }
