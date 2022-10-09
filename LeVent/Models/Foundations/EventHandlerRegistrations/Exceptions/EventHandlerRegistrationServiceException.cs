@@ -6,8 +6,11 @@ using Xeptions;
 
 namespace LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions
 {
-    public class NullEventHandlerRegistrationException : Xeption
+    public class EventHandlerRegistrationServiceException : Xeption
     {
-        public NullEventHandlerRegistrationException() : base("Event handler is null") { }
+        public EventHandlerRegistrationServiceException(Xeption innerException)
+            : base("Event service error occurred, contact support.",
+                innerException)
+        { }
     }
 }

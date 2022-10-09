@@ -1,4 +1,8 @@
-﻿using Xeptions;
+﻿// -------------------------------------------------
+// Copyright (c) PiorSoft, LLC. All rights reserved.
+// -------------------------------------------------
+
+using Xeptions;
 
 namespace LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions
 {
