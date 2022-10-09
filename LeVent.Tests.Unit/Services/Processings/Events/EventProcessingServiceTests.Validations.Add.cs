@@ -43,7 +43,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                     It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Never);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

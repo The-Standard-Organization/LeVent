@@ -8,22 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
-using LeVent.Services.Foundations.Events;
 
 namespace LeVent.Services.Processings.Events
 {
     public partial class EventProcessingService<T> : IEventProcessingService<T>
     {
-        private readonly IEventService<T> eventService;
         private readonly IEventHandlerRegistrationService<T> eventHandlerRegistrationService;
 
-        public EventProcessingService(
-            IEventService<T> eventService,
-            IEventHandlerRegistrationService<T> eventHandlerRegistrationService)
-        {
-            this.eventService = eventService;
+        public EventProcessingService(IEventHandlerRegistrationService<T> eventHandlerRegistrationService) =>
             this.eventHandlerRegistrationService = eventHandlerRegistrationService;
-        }
 
         public void AddEventHandler(Func<T, ValueTask> eventHandler, string eventName = null) =>
         TryCatch(() =>

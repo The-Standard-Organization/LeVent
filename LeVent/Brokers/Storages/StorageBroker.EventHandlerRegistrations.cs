@@ -3,6 +3,7 @@
 // -------------------------------------------------
 
 using System.Collections.Generic;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 
 namespace LeVent.Brokers.Storages
 {

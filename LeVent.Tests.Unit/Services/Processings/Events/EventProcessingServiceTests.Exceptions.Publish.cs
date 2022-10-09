@@ -48,7 +48,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 service.RetrieveAllEventHandlerRegistrations(),
                     Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

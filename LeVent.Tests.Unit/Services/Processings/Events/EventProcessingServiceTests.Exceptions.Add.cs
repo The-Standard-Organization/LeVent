@@ -55,7 +55,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                     It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
 
         [Theory]
@@ -97,7 +97,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                     It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -141,7 +141,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                     It.IsAny<EventHandlerRegistration<object>>()),
                         Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }
