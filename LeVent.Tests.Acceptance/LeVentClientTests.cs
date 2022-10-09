@@ -31,6 +31,33 @@ namespace LeVent.Tests.Acceptance
             eventResults.Count.Should().Be(2);
             eventResults.Should().Contain($"{myEvent} arrived @ First Handler");
             eventResults.Should().Contain($"{myEvent} arrived @ Second Handler");
+            eventResults = new List<string>();
+        }
+
+        [Fact]
+        public async Task ShouldRegisterPublishForSpecificEventNameAsync()
+        {
+            // given
+            string eventName = "event name";
+            string myEvent = "nothing";
+            var leVentClient = new LeVentClient<string>();
+
+            // when
+            leVentClient.RegisterEventHandler(
+                eventHandler: DoSomethingWithEvent, 
+                eventName);
+            
+            leVentClient.RegisterEventHandler(
+                eventHandler: DoSomethingElseWithEventAsync,
+                eventName);
+            
+            await leVentClient.PublishEventAsync(myEvent, eventName);
+
+            // then
+            eventResults.Count.Should().Be(2);
+            eventResults.Should().Contain($"{myEvent} arrived @ First Handler");
+            eventResults.Should().Contain($"{myEvent} arrived @ Second Handler");
+            eventResults = new List<string>();
         }
 
         private ValueTask DoSomethingWithEvent(string @event)

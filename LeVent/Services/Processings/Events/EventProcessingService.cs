@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
@@ -39,17 +40,25 @@ namespace LeVent.Services.Processings.Events
                 eventHandlerRegistration);
         });
 
-        public ValueTask PublishEventAsync(T @event) =>
+        public ValueTask PublishEventAsync(T @event, string eventName = null) =>
         TryCatch(async () =>
         {
             ValidateEvent(@event);
 
-            List<Func<T, ValueTask>> registeredEvents =
-                this.eventService.RetrieveAllEventHandlers();
+            List<EventHandlerRegistration<T>> registrations =
+                this.eventHandlerRegistrationService
+                    .RetrieveAllEventHandlerRegistrations();
 
-            foreach (Func<T, ValueTask> registeredEvent in registeredEvents)
+            List<Func<T, ValueTask>> eventHandlers = 
+                registrations.Where(registration =>
+                    registration.EventName == eventName)
+                        .Select(registration =>
+                            registration.EventHandler)
+                                .ToList();
+
+            foreach (Func<T, ValueTask> eventHandler in eventHandlers)
             {
-                await registeredEvent(@event);
+                await eventHandler(@event);
             }
         });
     }

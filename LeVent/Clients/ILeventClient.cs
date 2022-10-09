@@ -9,7 +9,7 @@ namespace LeVent.Clients
 {
     public interface ILeVentClient<T>
     {
-        void RegisterEventHandler(Func<T, ValueTask> eventHandler);
-        ValueTask PublishEventAsync(T @event);
+        void RegisterEventHandler(Func<T, ValueTask> eventHandler, string eventName = null);
+        ValueTask PublishEventAsync(T @event, string eventName = null);
     }
 }

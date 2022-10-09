@@ -36,11 +36,11 @@ namespace LeVent.Clients
                     registrationService);
         }
 
-        public async ValueTask PublishEventAsync(T @event)
+        public async ValueTask PublishEventAsync(T @event, string eventName = null)
         {
             try
             {
-                await this.eventProcessingService.PublishEventAsync(@event);
+                await this.eventProcessingService.PublishEventAsync(@event, eventName);
             }
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
@@ -64,11 +64,11 @@ namespace LeVent.Clients
             }
         }
 
-        public void RegisterEventHandler(Func<T, ValueTask> eventHandler)
+        public void RegisterEventHandler(Func<T, ValueTask> eventHandler, string eventName = null)
         {
             try
             {
-                this.eventProcessingService.AddEventHandler(eventHandler);
+                this.eventProcessingService.AddEventHandler(eventHandler, eventName);
             }
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
