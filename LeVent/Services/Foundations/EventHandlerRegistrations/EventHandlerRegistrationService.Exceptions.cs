@@ -2,6 +2,7 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using System;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 
 namespace LeVent.Services.Foundations.EventRegistrations
@@ -25,6 +26,14 @@ namespace LeVent.Services.Foundations.EventRegistrations
             {
                 throw new EventHandlerRegistrationValidationException(
                     invalidEventHandlerRegistrationException);
+            }
+            catch (Exception exception)
+            {
+                var failedEventHandlerRegistrationServiceException =
+                    new FailedEventHandlerRegistrationServiceException(exception);
+
+                throw new EventHandlerRegistrationServiceException(
+                    failedEventHandlerRegistrationServiceException);
             }
         }
     }
