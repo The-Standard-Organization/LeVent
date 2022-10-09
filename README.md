@@ -119,4 +119,4 @@ Here's the Low-Level Architecture of this library
 
 <br />
 
-![image](https://user-images.githubusercontent.com/1453985/192701495-8d7be736-750d-4f71-8cd6-79c0d208f0d4.png)
+![image](https://user-images.githubusercontent.com/1453985/194765922-b5c0f67b-79f0-49b1-80ba-8fffc4546c7c.png)
