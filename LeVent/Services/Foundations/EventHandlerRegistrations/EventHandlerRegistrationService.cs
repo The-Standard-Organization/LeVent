@@ -24,6 +24,6 @@ namespace LeVent.Services.Foundations.EventRegistrations
         });
 
         public List<EventHandlerRegistration<T>> RetrieveAllEventHandlerRegistrations() =>
-            this.storageBroker.SelectAllEventHandlerRegistrations();
+        TryCatch(() => this.storageBroker.SelectAllEventHandlerRegistrations());
     }
 }
