@@ -4,6 +4,7 @@
 
 using System;
 using System.Threading.Tasks;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public void ShouldAddEventHandler()
+        public void ShouldRegisterEventHandlerWithoutEventName()
         {
             // given
             var eventHandlerMock =
@@ -21,13 +22,21 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             Func<object, ValueTask> inputEventHandler =
                 eventHandlerMock.Object;
 
+            var expectedInputEventHandlerRegistration =
+                new EventHandlerRegistration<object>
+                {
+                    EventHandler = inputEventHandler
+                };
+
             // when
             this.eventProcessingService.AddEventHandler(inputEventHandler);
 
             // then
-            this.eventServiceMock.Verify(broker =>
-                broker.AddEventHandler(inputEventHandler),
-                    Times.Once);
+            this.eventHandlerRegistrationServiceMock.Verify(service =>
+                service.AddEventHandlerRegistation(
+                    It.Is(SameEventHandlerRegistrationAs(
+                        expectedInputEventHandlerRegistration))),
+                            Times.Once);
 
             this.eventServiceMock.VerifyNoOtherCalls();
         }
