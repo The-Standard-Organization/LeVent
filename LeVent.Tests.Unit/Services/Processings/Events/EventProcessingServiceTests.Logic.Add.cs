@@ -25,7 +25,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             var expectedInputEventHandlerRegistration =
                 new EventHandlerRegistration<object>
                 {
-                    EventHandler = inputEventHandler
+                    EventHandler = inputEventHandler,
+                    EventName = null
                 };
 
             // when

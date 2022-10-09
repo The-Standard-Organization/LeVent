@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
 using LeVent.Services.Foundations.Events;
 
@@ -28,7 +29,14 @@ namespace LeVent.Services.Processings.Events
         {
             ValidateEventHandler(eventHandler);
 
-            this.eventService.AddEventHandler(eventHandler);
+            var eventHandlerRegistration = new EventHandlerRegistration<T>
+            {
+                EventHandler = eventHandler,
+                EventName = eventName
+            };
+
+            this.eventHandlerRegistrationService.AddEventHandlerRegistation(
+                eventHandlerRegistration);
         });
 
         public ValueTask PublishEventAsync(T @event) =>
