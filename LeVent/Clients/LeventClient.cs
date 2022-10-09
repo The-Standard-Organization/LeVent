@@ -9,7 +9,6 @@ using LeVent.Models.Clients.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using LeVent.Services.Foundations.EventRegistrations;
-using LeVent.Services.Foundations.Events;
 using LeVent.Services.Processings.Events;
 using Xeptions;
 
@@ -24,16 +23,11 @@ namespace LeVent.Clients
             IStorageBroker<T> storageBroker =
                 new StorageBroker<T>();
 
-            IEventService<T> eventService =
-                new EventService<T>(storageBroker);
-
             IEventHandlerRegistrationService<T> registrationService =
                 new EventHandlerRegistrationService<T>(storageBroker);
 
             this.eventProcessingService =
-                new EventProcessingService<T>(
-                    eventService,
-                    registrationService);
+                new EventProcessingService<T>(registrationService);
         }
 
         public async ValueTask PublishEventAsync(T @event, string eventName = null)

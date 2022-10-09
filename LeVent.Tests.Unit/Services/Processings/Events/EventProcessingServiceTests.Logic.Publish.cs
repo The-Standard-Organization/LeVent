@@ -56,7 +56,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             // given
             string randomEventName = GetRandomEventName();
             string inputEventName = randomEventName;
-            
+
             List<Mock<Func<object, ValueTask>>> randomCalledEventHandlerMocks =
                 CreateRandomEventHandlerMocks();
 

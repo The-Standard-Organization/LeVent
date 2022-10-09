@@ -37,11 +37,11 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
             actualEventProcessingValidationException.Should()
                 .BeEquivalentTo(expectedEventProcessingValidationException);
 
-            this.eventServiceMock.Verify(broker =>
-                broker.RetrieveAllEventHandlers(),
+            this.eventHandlerRegistrationServiceMock.Verify(broker =>
+                broker.RetrieveAllEventHandlerRegistrations(),
                     Times.Never);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

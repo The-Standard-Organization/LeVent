@@ -10,9 +10,7 @@ using System.Threading.Tasks;
 using KellermanSoftware.CompareNetObjects;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
-using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Services.Foundations.EventRegistrations;
-using LeVent.Services.Foundations.Events;
 using LeVent.Services.Processings.Events;
 using Moq;
 using Tynamix.ObjectFiller;
@@ -23,16 +21,12 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 {
     public partial class EventProcessingServiceTests
     {
-        private readonly Mock<IEventService<object>> eventServiceMock;
         private readonly Mock<IEventHandlerRegistrationService<object>> eventHandlerRegistrationServiceMock;
         private readonly ICompareLogic compareLogic;
         private readonly IEventProcessingService<object> eventProcessingService;
 
         public EventProcessingServiceTests()
         {
-            this.eventServiceMock =
-                new Mock<IEventService<object>>();
-
             this.eventHandlerRegistrationServiceMock =
                 new Mock<IEventHandlerRegistrationService<object>>();
 
@@ -40,7 +34,6 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             this.eventProcessingService =
                 new EventProcessingService<object>(
-                    eventService: this.eventServiceMock.Object,
                     eventHandlerRegistrationService: this.eventHandlerRegistrationServiceMock.Object);
         }
 

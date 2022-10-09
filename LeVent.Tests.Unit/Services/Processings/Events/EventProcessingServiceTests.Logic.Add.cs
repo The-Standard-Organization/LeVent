@@ -39,7 +39,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                         expectedInputEventHandlerRegistration))),
                             Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                         expectedInputEventHandlerRegistration))),
                             Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

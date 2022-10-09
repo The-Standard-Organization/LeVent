@@ -44,13 +44,13 @@ namespace LeVent.Tests.Acceptance
 
             // when
             leVentClient.RegisterEventHandler(
-                eventHandler: DoSomethingWithEvent, 
+                eventHandler: DoSomethingWithEvent,
                 eventName);
-            
+
             leVentClient.RegisterEventHandler(
                 eventHandler: DoSomethingElseWithEventAsync,
                 eventName);
-            
+
             await leVentClient.PublishEventAsync(myEvent, eventName);
 
             // then

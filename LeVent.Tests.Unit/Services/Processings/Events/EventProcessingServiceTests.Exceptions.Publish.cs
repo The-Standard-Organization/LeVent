@@ -5,7 +5,6 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
 using Xunit;
@@ -49,7 +48,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
                 service.RetrieveAllEventHandlerRegistrations(),
                     Times.Once);
 
-            this.eventServiceMock.VerifyNoOtherCalls();
+            this.eventHandlerRegistrationServiceMock.VerifyNoOtherCalls();
         }
     }
 }

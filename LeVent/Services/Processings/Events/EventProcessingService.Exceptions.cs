@@ -11,7 +11,7 @@ using Xeptions;
 
 namespace LeVent.Services.Processings.Events
 {
-    public partial class EventProcessingService<T> : IEventProcessingService<T>
+    public partial class EventProcessingService<T>
     {
         private delegate void ReturningNothingFunction();
         private delegate ValueTask ReturningValueTaskFunction();
