@@ -13,17 +13,17 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>LeVent.png</PackageIcon>
 		<PackageIconUrl />
-		<Version>1.1</Version>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
-		<FileVersion>1.1.0.0</FileVersion>
+		<Version>1.2</Version>
+		<AssemblyVersion>1.2.0.0</AssemblyVersion>
+		<FileVersion>1.2.0.0</FileVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageLicenseExpression></PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/hassanhabib/LeVent</PackageProjectUrl>
 		<PackageLicenseFile>license.txt</PackageLicenseFile>
-		<RepositoryUrl>https://github.com/hassanhabib/RESTFulSense</RepositoryUrl>
+		<RepositoryUrl>https://github.com/hassanhabib/LeVent</RepositoryUrl>
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>Events .NET</PackageTags>
-		<PackageReleaseNotes>First Release - Basic Local Events</PackageReleaseNotes>
+		<PackageReleaseNotes>Added Basic Events with Target Event Name</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
