@@ -23,9 +23,7 @@ namespace LeVent.Services.Foundations.EventRegistrations
             this.storageBroker.InsertEventHandlerRegistration(eventHandlerRegistration);
         });
 
-        public List<EventHandlerRegistration<T>> RetrieveAllEventHandlerRegistrations()
-        {
-            throw new System.NotImplementedException();
-        }
+        public List<EventHandlerRegistration<T>> RetrieveAllEventHandlerRegistrations() =>
+            this.storageBroker.SelectAllEventHandlerRegistrations();
     }
 }
