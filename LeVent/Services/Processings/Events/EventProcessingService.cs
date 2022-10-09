@@ -50,8 +50,11 @@ namespace LeVent.Services.Processings.Events
                     .RetrieveAllEventHandlerRegistrations();
 
             List<Func<T, ValueTask>> eventHandlers = 
-                registrations.Select(registration =>
-                    registration.EventHandler).ToList();
+                registrations.Where(registration =>
+                    registration.EventName == eventName)
+                        .Select(registration =>
+                            registration.EventHandler)
+                                .ToList();
 
             foreach (Func<T, ValueTask> eventHandler in eventHandlers)
             {

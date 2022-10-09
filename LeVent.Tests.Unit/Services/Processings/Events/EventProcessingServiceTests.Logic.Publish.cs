@@ -70,8 +70,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             List<EventHandlerRegistration<object>> randomNonTargetEventHandlerRegistrations =
                 CreateEventHandlerRegistrationsFromMocks(
-                    randomNonCalledEventHandlerMocks,
-                    inputEventName);
+                    randomNonCalledEventHandlerMocks);
 
             List<EventHandlerRegistration<object>> retrievedTargetEventHandlerRegistrations =
                 randomTargetEventHandlerRegistrations;
