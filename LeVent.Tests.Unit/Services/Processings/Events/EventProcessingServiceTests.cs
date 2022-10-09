@@ -5,8 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using KellermanSoftware.CompareNetObjects;
+using LeVent.Models.Foundations.EventHandlerRegistrations;
+using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
+using LeVent.Services.Foundations.EventRegistrations;
 using LeVent.Services.Foundations.Events;
 using LeVent.Services.Processings.Events;
 using Moq;
@@ -19,24 +24,35 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         private readonly Mock<IEventService<object>> eventServiceMock;
+        private readonly Mock<IEventHandlerRegistrationService<object>> eventHandlerRegistrationServiceMock;
+        private readonly ICompareLogic compareLogic;
         private readonly IEventProcessingService<object> eventProcessingService;
 
         public EventProcessingServiceTests()
         {
-            this.eventServiceMock = new Mock<IEventService<object>>();
+            this.eventServiceMock =
+                new Mock<IEventService<object>>();
+            
+            this.eventHandlerRegistrationServiceMock =
+                new Mock<IEventHandlerRegistrationService<object>>();
+            
+            this.compareLogic = new CompareLogic();
 
-            this.eventProcessingService = new EventProcessingService<object>(
-                eventService: this.eventServiceMock.Object);
+            this.eventProcessingService = 
+                new EventProcessingService<object>(
+                    eventService: this.eventServiceMock.Object,
+                    eventHandlerRegistrationService: this.eventHandlerRegistrationServiceMock.Object);
         }
 
         public static TheoryData DependencyValidationExceptions()
         {
-            var nullEventHandlerException =
-                new NullEventHandlerException();
+            var nullEventHandlerRegistrationException =
+                new NullEventHandlerRegistrationException();
 
             return new TheoryData<Exception>
             {
-                new EventValidationException(nullEventHandlerException)
+                new EventHandlerRegistrationValidationException(
+                    nullEventHandlerRegistrationException)
             };
         }
 
@@ -47,9 +63,16 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             return new TheoryData<Exception>
             {
-                new EventDependencyException(someInnerException),
-                new EventServiceException(someInnerException)
+                new EventHandlerRegistrationServiceException(someInnerException)
             };
+        }
+
+        private Expression<Func<EventHandlerRegistration<object>, bool>> SameEventHandlerRegistrationAs(
+            EventHandlerRegistration<object> expectedEventHandlerRegistration)
+        {
+            return actualEventHandlerRegistration =>
+                this.compareLogic.Compare(expectedEventHandlerRegistration, actualEventHandlerRegistration)
+                    .AreEqual;
         }
 
         private static List<Mock<Func<object, ValueTask>>> CreateRandomEventHandlerMocks()
@@ -63,5 +86,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
         private static int GetRandomNumber() =>
             new IntRange(min: 2, max: 10).GetValue();
+
+        private static string GetRandomEventName() =>
+            new MnemonicString().GetValue();
     }
 }

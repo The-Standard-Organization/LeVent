@@ -9,7 +9,7 @@ namespace LeVent.Services.Processings.Events
 {
     public interface IEventProcessingService<T>
     {
-        void AddEventHandler(Func<T, ValueTask> eventHandler);
+        void AddEventHandler(Func<T, ValueTask> eventHandler, string eventName = null);
         ValueTask PublishEventAsync(T @event);
     }
 }
