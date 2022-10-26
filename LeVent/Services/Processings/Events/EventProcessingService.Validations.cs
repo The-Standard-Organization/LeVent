@@ -20,7 +20,7 @@ namespace LeVent.Services.Processings.Events
 
         private static void ValidateEvent(T @event)
         {
-            if (@event is null)
+            if (@event == null)
             {
                 throw new NullEventProcessingException();
             }
