@@ -1,5 +1,8 @@
 ﻿using Azure.Messaging.EventGrid;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LeVent.Azure.EventGrid.Builder
 {
@@ -12,8 +15,14 @@ namespace LeVent.Azure.EventGrid.Builder
             eventHandlerRegistrations = new();
         }
 
-        public void AddEventGridEvent(EventHandlerRegistration<EventGridEvent> eventRegistration)
+        public void AddEventGridEvent(string name, Func<EventGridEvent, ValueTask> eventHandler)
         {
+            EventHandlerRegistration<EventGridEvent> eventRegistration = new()
+            {
+                EventName = name,
+                EventHandler = eventHandler
+            };
+
             eventHandlerRegistrations.Add(eventRegistration);
         }
 

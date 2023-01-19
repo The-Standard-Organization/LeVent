@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Infrastructure.Build
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Tests.Manual", "LeVent.Tests.Manual\LeVent.Tests.Manual.csproj", "{34A836CA-49B6-4F1A-83AB-152931169BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Azure.EventGrid", "LeVent.Azure.EventGrid\LeVent.Azure.EventGrid.csproj", "{C941EC22-944F-4133-9868-04726638E0E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVent.Azure.EventGrid", "LeVent.Azure.EventGrid\LeVent.Azure.EventGrid.csproj", "{C941EC22-944F-4133-9868-04726638E0E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVent.Azure.EventGrid.Test", "LeVent.Azure.EventGrid.Test\LeVent.Azure.EventGrid.Test.csproj", "{63FFC7FE-489B-41E5-BDF1-D57F62C1AF82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C941EC22-944F-4133-9868-04726638E0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C941EC22-944F-4133-9868-04726638E0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C941EC22-944F-4133-9868-04726638E0E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63FFC7FE-489B-41E5-BDF1-D57F62C1AF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63FFC7FE-489B-41E5-BDF1-D57F62C1AF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63FFC7FE-489B-41E5-BDF1-D57F62C1AF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63FFC7FE-489B-41E5-BDF1-D57F62C1AF82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
