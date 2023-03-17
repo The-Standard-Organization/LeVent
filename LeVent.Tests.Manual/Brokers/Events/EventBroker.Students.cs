@@ -2,10 +2,10 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using LeVent.Clients;
 using LeVent.Tests.Manual.Models.Students;
+using System;
+using System.Threading.Tasks;
 
 namespace LeVent.Tests.Manual.Brokers.Events
 {

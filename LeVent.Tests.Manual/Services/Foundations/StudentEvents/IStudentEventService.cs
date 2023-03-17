@@ -2,9 +2,9 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using LeVent.Tests.Manual.Models.Students;
 using System;
 using System.Threading.Tasks;
-using LeVent.Tests.Manual.Models.Students;
 
 namespace LeVent.Tests.Manual.Services.Foundations.StudentEvents
 {

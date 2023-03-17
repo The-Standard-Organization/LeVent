@@ -2,14 +2,14 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Services.Foundations.EventRegistrations;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Tynamix.ObjectFiller;
 
 namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations

@@ -2,10 +2,10 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System.Collections.Generic;
 using FluentAssertions;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations

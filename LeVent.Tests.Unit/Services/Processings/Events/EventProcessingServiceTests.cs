@@ -2,17 +2,17 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using KellermanSoftware.CompareNetObjects;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Services.Foundations.EventRegistrations;
 using LeVent.Services.Processings.Events;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Tynamix.ObjectFiller;
 using Xeptions;
 using Xunit;

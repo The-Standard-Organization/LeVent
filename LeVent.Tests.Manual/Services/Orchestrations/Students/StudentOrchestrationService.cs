@@ -2,10 +2,10 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System.Threading.Tasks;
 using LeVent.Tests.Manual.Models.Students;
 using LeVent.Tests.Manual.Services.Foundations.StudentEvents;
 using LeVent.Tests.Manual.Services.Foundations.Students;
+using System.Threading.Tasks;
 
 namespace LeVent.Tests.Manual.Services.Orchestrations.Students
 {

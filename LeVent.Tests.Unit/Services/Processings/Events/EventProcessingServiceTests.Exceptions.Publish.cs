@@ -2,11 +2,11 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using FluentAssertions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using Moq;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace LeVent.Tests.Unit.Services.Foundations.Events

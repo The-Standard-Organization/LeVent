@@ -2,9 +2,9 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
+using LeVent.Models.Processings.Events.Exceptions;
 using System;
 using System.Threading.Tasks;
-using LeVent.Models.Processings.Events.Exceptions;
 
 namespace LeVent.Services.Processings.Events
 {

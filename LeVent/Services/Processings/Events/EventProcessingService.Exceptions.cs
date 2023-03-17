@@ -2,11 +2,11 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
+using System;
+using System.Threading.Tasks;
 using Xeptions;
 
 namespace LeVent.Services.Processings.Events

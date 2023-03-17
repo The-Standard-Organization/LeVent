@@ -2,14 +2,14 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using LeVent.Brokers.Storages;
 using LeVent.Models.Clients.Exceptions;
 using LeVent.Models.Foundations.Events.Exceptions;
 using LeVent.Models.Processings.Events.Exceptions;
 using LeVent.Services.Foundations.EventRegistrations;
 using LeVent.Services.Processings.Events;
+using System;
+using System.Threading.Tasks;
 using Xeptions;
 
 namespace LeVent.Clients

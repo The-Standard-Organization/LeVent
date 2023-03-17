@@ -2,8 +2,8 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System.Collections.Generic;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
+using System.Collections.Generic;
 
 namespace LeVent.Brokers.Storages
 {

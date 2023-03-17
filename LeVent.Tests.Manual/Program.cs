@@ -2,8 +2,6 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using LeVent.Tests.Manual.Brokers.Events;
 using LeVent.Tests.Manual.Models.Students;
 using LeVent.Tests.Manual.Services.Foundations.StudentEvents;
@@ -11,6 +9,8 @@ using LeVent.Tests.Manual.Services.Foundations.StudentLibraries;
 using LeVent.Tests.Manual.Services.Foundations.Students;
 using LeVent.Tests.Manual.Services.Orchestrations.StudentLibraries;
 using LeVent.Tests.Manual.Services.Orchestrations.Students;
+using System;
+using System.Threading.Tasks;
 
 namespace LeVent.Tests.Manual
 {

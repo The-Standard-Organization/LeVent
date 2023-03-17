@@ -2,10 +2,10 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using FluentAssertions;
 using LeVent.Clients;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace LeVent.Tests.Acceptance

@@ -2,8 +2,8 @@
 // Copyright (c) PiorSoft, LLC. All rights reserved.
 // -------------------------------------------------
 
-using System;
 using LeVent.Tests.Manual.Models.Students;
+using System;
 
 namespace LeVent.Tests.Manual.Services.Foundations.Students
 {
