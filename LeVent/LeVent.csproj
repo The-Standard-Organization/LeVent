@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
-		<Nullable>disable</Nullable>
 		<Title>LeVent</Title>
 		<Authors>Hassan Habib | Kailu Hu</Authors>
 		<Company>PiorSoft, LLC</Company>
@@ -27,7 +26,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xeption" Version="2.4.0" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Xeption" Version="2.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
