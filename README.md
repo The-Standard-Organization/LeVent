@@ -1,9 +1,8 @@
-<p align="center">
-  <img width="25%" height="25%" src="https://github.com/hassanhabib/LeVent/blob/master/LeVent/LeVent.png?raw=true">
-</p>
+![LeVent](https://raw.githubusercontent.com/hassanhabib/LeVent/master/LeVent/LeVent_git_logo.png)
 
 [![.NET](https://github.com/hassanhabib/LeVent/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hassanhabib/LeVent/actions/workflows/dotnet.yml)
 [![Nuget](https://img.shields.io/nuget/v/LeVent?logo=nuget)](https://www.nuget.org/packages/LeVent/)
+![Nuget](https://img.shields.io/nuget/dt/LeVent?color=blue&label=Downloads)
 [![The Standard - COMPLIANT](https://img.shields.io/badge/The_Standard-COMPLIANT-2ea44f)](https://github.com/hassanhabib/The-Standard)
 [![The Standard Community](https://img.shields.io/discord/934130100008538142?color=%237289da&label=The%20Standard%20Community&logo=Discord)](https://discord.gg/vdPZ7hS52X)
 
@@ -118,6 +117,5 @@ These patterns allow for a more maintainble standardized systems - completely de
 
 Here's the Low-Level Architecture of this library
 
-<br />
 
 ![image](https://user-images.githubusercontent.com/1453985/194765922-b5c0f67b-79f0-49b1-80ba-8fffc4546c7c.png)
