@@ -10,7 +10,7 @@
 LeVent is a simple .NET library designed to provide a local event subscribing/publishing capabilities to .NET developers.
 
 ## How it Works
-It's important to understand the ideas around the [Cul-De-Sac pattern](youtube.com/watch?v=Wgz5m0MY9Xo&ab_channel=HassanHabib) in order for you to take the most advantage of LeVent.
+It's important to understand the ideas around the [Cul-De-Sac pattern](https://www.youtube.com/watch?v=Wgz5m0MY9Xo&ab_channel=HassanHabib) in order for you to take the most advantage of LeVent.
 
 Assume that you have multiple Foundation Services that want to be notified when an event of any type occurs. You can create a simple `EventBroker` that leverages LeVent to offer the registeration and publishing capabilities as follows:
 
