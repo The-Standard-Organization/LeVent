@@ -1,6 +1,7 @@
-﻿// -------------------------------------------------
-// Copyright (c) PiorSoft, LLC. All rights reserved.
-// -------------------------------------------------
+﻿// -------------------------------------------------------------------------------
+// Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
+// -------------------------------------------------------------------------------
+
 
 using LeVent.Clients;
 using LeVent.Tests.Manual.Models.Students;
