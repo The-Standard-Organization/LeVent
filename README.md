@@ -10,6 +10,11 @@
 # LeVent
 LeVent is a simple .NET library designed to provide a local event subscribing/publishing capabilities to .NET developers.
 
+## Standard-Compliance
+This library was built according to The Standard. The library follows engineering principles, patterns and tooling as recommended by The Standard.
+
+This library is also a community effort which involved many nights of pair-programming, test-driven development and in-depth exploration research and design discussions.
+
 ## How it Works
 It's important to understand the ideas around the [Cul-De-Sac pattern](https://www.youtube.com/watch?v=Wgz5m0MY9Xo&ab_channel=HassanHabib) in order for you to take the most advantage of LeVent.
 
