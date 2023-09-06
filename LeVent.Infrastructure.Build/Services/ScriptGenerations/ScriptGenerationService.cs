@@ -1,12 +1,13 @@
-﻿// -------------------------------------------------------------------------------
-// Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
-// -------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
+// Copyright (c) The Standard Organization: A coalition of the Good-Hearted Engineers
+// ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.IO;
 using ADotNet.Clients;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks;
-using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks.SetupDotNetTaskV1s;
+using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks.SetupDotNetTaskV3s;
 
 namespace LeVent.Infrastructure.Build.Services.ScriptGenerations
 {
@@ -36,52 +37,60 @@ namespace LeVent.Infrastructure.Build.Services.ScriptGenerations
                     }
                 },
 
-                Jobs = new Jobs
+                Jobs = new Dictionary<string, Job>
                 {
-                    Build = new BuildJob
                     {
-                        RunsOn = BuildMachines.Windows2022,
-
-                        Steps = new List<GithubTask>
+                        "build",
+                        new Job
                         {
-                            new CheckoutTaskV2
-                            {
-                                Name = "Checking out code"
-                            },
+                            RunsOn = BuildMachines.Windows2022,
 
-                            new SetupDotNetTaskV1
+                            Steps = new List<GithubTask>
                             {
-                                Name = "Installing .NET",
-
-                                TargetDotNetVersion = new TargetDotNetVersion
+                                new CheckoutTaskV2
                                 {
-                                    DotNetVersion = "7.0.100-rc.1.22431.12",
-                                    IncludePrerelease = true
+                                    Name = "Checking out code"
+                                },
+
+                                new SetupDotNetTaskV3
+                                {
+                                    Name = "Installing .NET",
+
+                                    With = new TargetDotNetVersionV3
+                                    {
+                                        DotNetVersion = "7.0.201"
+                                    }
+                                },
+
+                                new RestoreTask
+                                {
+                                    Name = "Restoring Packages"
+                                },
+
+                                new DotNetBuildTask
+                                {
+                                    Name = "Building Project(s)"
+                                },
+
+                                new TestTask
+                                {
+                                    Name = "Running Tests"
                                 }
-                            },
-
-                            new RestoreTask
-                            {
-                                Name = "Restoring Packages"
-                            },
-
-                            new DotNetBuildTask
-                            {
-                                Name = "Building Project(s)"
-                            },
-
-                            new TestTask
-                            {
-                                Name = "Running Tests"
                             }
                         }
-                    },
+                    }
                 }
             };
 
-            this.adotNetClient.SerializeAndWriteToFile(
-                githubPipeline,
-                path: "../../../../.github/workflows/dotnet.yml");
+            string buildScriptPath = "../../../../.github/workflows/dotnet.yml";
+            string directoryPath = Path.GetDirectoryName(buildScriptPath);
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            adotNetClient.SerializeAndWriteToFile(githubPipeline, path: buildScriptPath);
         }
     }
 }
