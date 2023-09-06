@@ -13,10 +13,9 @@ jobs:
     - name: Checking out code
       uses: actions/checkout@v2
     - name: Installing .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.401
-        include-prerelease: false
+        dotnet-version: 7.0.201
     - name: Restoring Packages
       run: dotnet restore
     - name: Building Project(s)
