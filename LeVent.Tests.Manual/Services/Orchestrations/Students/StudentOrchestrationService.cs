@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System.Threading.Tasks;
 using LeVent.Tests.Manual.Models.Students;
 using LeVent.Tests.Manual.Services.Foundations.StudentEvents;
