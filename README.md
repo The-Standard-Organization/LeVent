@@ -141,4 +141,4 @@ If you have any suggestions, comments or questions, please feel free to contact 
 [E-Mail](mailto:hassanhabib@live.com)
 
 ### Important Notice
-Special thanks to all the contributors that make this project a success.
+Special thanks to all the contributors that make this project a success. A special thanks to Mr. Hassan Habib and Mr. Kailu Hu for their dedicated contribution.
