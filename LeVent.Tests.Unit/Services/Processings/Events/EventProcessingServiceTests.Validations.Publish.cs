@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System.Threading.Tasks;
 using FluentAssertions;
 using LeVent.Models.Processings.Events.Exceptions;
@@ -14,17 +13,19 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public async Task ShouldThrowValidationExceptionOnAddIfEventIsNullAsync()
+        private async Task ShouldThrowValidationExceptionOnAddIfEventIsNullAsync()
         {
             // given
             object nullEvent = null;
 
             var nullEventProcessingException =
-                new NullEventProcessingException();
+                new NullEventProcessingException(
+                    message: "Event is null");
 
             var expectedEventProcessingValidationException =
                 new EventProcessingValidationException(
-                    nullEventProcessingException);
+                    message: "Event validation error occurred, please fix error and try again. ",
+                    innerException: nullEventProcessingException);
 
             // when
             ValueTask publishEventTask = this.eventProcessingService

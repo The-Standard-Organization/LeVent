@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

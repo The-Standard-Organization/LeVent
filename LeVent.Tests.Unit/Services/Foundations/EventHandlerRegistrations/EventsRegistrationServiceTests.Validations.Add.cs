@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using FluentAssertions;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
@@ -15,14 +14,19 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
     public partial class EventHandlerRegistrationServiceTests
     {
         [Fact]
-        public void ShouldThrowValidationExceptionOnAddIfEventRegistrationHandlerIsNull()
+        private void ShouldThrowValidationExceptionOnAddIfEventRegistrationHandlerIsNull()
         {
             // given
             EventHandlerRegistration<object> nullEventHandler = null;
-            var nullEventHandlerException = new NullEventHandlerRegistrationException();
+            
+            var nullEventHandlerException =
+                new NullEventHandlerRegistrationException(
+                    message: "Event handler is null");
 
             var expectedEventHandlerRegistrationValidationException =
-                new EventHandlerRegistrationValidationException(nullEventHandlerException);
+                new EventHandlerRegistrationValidationException(
+                    message: "Event validation error occurred, please fix error and try again. ",
+                    innerException: nullEventHandlerException);
 
             // when
             Action addEventHandlerRegistrationAction = () =>
@@ -47,7 +51,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
         }
 
         [Fact]
-        public void ShouldThrowValidationExceptionOnAddIfEventHandlerIsNull()
+        private void ShouldThrowValidationExceptionOnAddIfEventHandlerIsNull()
         {
             // given
             EventHandlerRegistration<object> randomEventHandlerRegistration =
@@ -59,7 +63,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
             invalidEventHandlerRegistration.EventHandler = null;
 
             var invalidEventHandlerRegistrationException =
-                new InvalidEventHandlerRegistrationException();
+                new InvalidEventHandlerRegistrationException(
+                    message: "Invalid event handler registration error ocurred, fix errors and try again.");
 
             invalidEventHandlerRegistrationException.AddData(
                 key: nameof(EventHandlerRegistration<object>.EventHandler),

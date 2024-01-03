@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Threading.Tasks;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
@@ -14,7 +13,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public void ShouldRegisterEventHandlerWithoutEventName()
+        private void ShouldRegisterEventHandlerWithoutEventName()
         {
             // given
             var eventHandlerMock =
@@ -44,7 +43,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         }
 
         [Fact]
-        public void ShouldRegisterEventHandlerWithEventName()
+        private void ShouldRegisterEventHandlerWithEventName()
         {
             // given
             var eventHandlerMock =

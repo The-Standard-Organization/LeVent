@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -15,7 +14,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public async Task ShouldThrowServiceExceptionOnPublishIfServiceErrorOccursAsync()
+        private async Task ShouldThrowServiceExceptionOnPublishIfServiceErrorOccursAsync()
         {
             // given
             var someEvent = new object();
@@ -23,11 +22,13 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             var failedEventProcessingServiceException =
                 new FailedEventProcessingServiceException(
-                    serviceException);
+                    message: "Failed event service error ocurred, contact support.",
+                    innerException: serviceException);
 
             var expectedEventServiceException =
                 new EventProcessingServiceException(
-                    failedEventProcessingServiceException);
+                    message: "Event service error occurred, contact support.",
+                    innerException: failedEventProcessingServiceException);
 
             this.eventHandlerRegistrationServiceMock.Setup(service =>
                 service.RetrieveAllEventHandlerRegistrations())

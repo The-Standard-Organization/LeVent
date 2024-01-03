@@ -35,7 +35,7 @@ namespace LeVent.Tests.Acceptance
         }
 
         [Fact]
-        public async Task ShouldRegisterPublishForSpecificEventNameAsync()
+        private async Task ShouldRegisterPublishForSpecificEventNameAsync()
         {
             // given
             string eventName = "event name";

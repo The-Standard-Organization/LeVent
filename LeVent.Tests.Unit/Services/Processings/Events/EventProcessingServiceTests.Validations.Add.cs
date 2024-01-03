@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -16,17 +15,19 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public void ShouldThrowValidationExceptionOnAddIfEventHandlerIsNull()
+        private void ShouldThrowValidationExceptionOnAddIfEventHandlerIsNull()
         {
             // given
             Func<object, ValueTask> nullEventHandler = null;
 
             var nullEventHandlerProcessingException =
-                new NullEventHandlerProcessingException();
+                new NullEventHandlerProcessingException(
+                    message: "Event handler is null");
 
             var expectedEventProcessingValidationException =
                 new EventProcessingValidationException(
-                    nullEventHandlerProcessingException);
+                    message: "Event validation error occurred, please fix error and try again. ",
+                    innerException: nullEventHandlerProcessingException);
 
             // when
             Action addEventHandlerAction = () =>

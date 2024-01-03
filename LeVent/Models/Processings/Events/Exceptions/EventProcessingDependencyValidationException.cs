@@ -9,8 +9,12 @@ namespace LeVent.Models.Processings.Events.Exceptions
     public class EventProcessingDependencyValidationException : Xeption
     {
         public EventProcessingDependencyValidationException(Xeption innerException)
-            : base("Event validation error occurred, please fix error and try again. ",
-                  innerException)
+            : base(message: "Event validation error occurred, please fix error and try again.",
+                innerException)
+        { }
+        
+        public EventProcessingDependencyValidationException(string message, Xeption innerException)
+            : base(message, innerException)
         { }
     }
 }

@@ -10,7 +10,11 @@ namespace LeVent.Models.Foundations.Events.Exceptions
     {
         public EventProcessingServiceException(Xeption innerException)
             : base(message: "Event service error occurred, contact support.",
-                  innerException)
+                innerException)
+        { }
+        
+        public EventProcessingServiceException(string message, Xeption innerException)
+            : base(message, innerException)
         { }
     }
 }

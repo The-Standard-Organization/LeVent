@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using FluentAssertions;
 using LeVent.Models.Foundations.EventHandlerRegistrations.Exceptions;
@@ -14,18 +13,20 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
     public partial class EventHandlerRegistrationServiceTests
     {
         [Fact]
-        public void ShouldThrowServiceExceptionOnRetrieveAllIfServiceErrorOcurrs()
+        private void ShouldThrowServiceExceptionOnRetrieveAllIfServiceErrorOcurrs()
         {
             // given
             var serviceException = new Exception();
 
             var failedEventHandlerRegistrationServiceException =
                 new FailedEventHandlerRegistrationServiceException(
-                    serviceException);
+                    message: "Failed event handler registration service error occurred, contact support.",
+                    innerException: serviceException);
 
             var expectedEventHandlerRegistrationServiceException =
                 new EventHandlerRegistrationServiceException(
-                    failedEventHandlerRegistrationServiceException);
+                    message: "Event service error occurred, contact support.",
+                    innerException: failedEventHandlerRegistrationServiceException);
 
             this.storageBrokerMock.Setup(broker =>
                 broker.SelectAllEventHandlerRegistrations())
