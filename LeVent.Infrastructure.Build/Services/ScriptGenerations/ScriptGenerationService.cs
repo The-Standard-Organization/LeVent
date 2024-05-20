@@ -86,7 +86,7 @@ namespace LeVent.Infrastructure.Build.Services.ScriptGenerations
                         new TagJob(
                             runsOn: BuildMachines.UbuntuLatest,
                             dependsOn: "build",
-                            projectRelativePath: "ADotNet/ADotNet.csproj",
+                            projectRelativePath: "LeVent/LeVent.csproj",
                             githubToken: "${{ secrets.PAT_FOR_TAGGING }}",
                             branchName: branchName)
                     },
