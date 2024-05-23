@@ -113,7 +113,7 @@ The figure above assumes no dependence between one listener and the other. You c
 
 ![image](https://user-images.githubusercontent.com/1453985/193402792-7e808de6-d649-4766-bcda-a29448fe8571.png)
 
-These patterns allow for more maintainable standardized systems—wholly decoupled from their event source and capable of passing forward an event as an interceptor or completing a task and forwarding.
+These patterns allow for more maintainable standardized systems wholly decoupled from their event source and capable of passing forward an event as an interceptor or completing a task and forwarding.
 
 
 Here's the Low-Level Architecture of this library
