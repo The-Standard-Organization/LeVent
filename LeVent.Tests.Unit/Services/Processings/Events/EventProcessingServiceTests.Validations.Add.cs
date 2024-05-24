@@ -26,7 +26,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             var expectedEventProcessingValidationException =
                 new EventProcessingValidationException(
-                    message: "Event validation error occurred, please fix error and try again. ",
+                    message: "Event validation error occurred, please fix error and try again.",
                     innerException: nullEventHandlerProcessingException);
 
             // when
