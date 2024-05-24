@@ -25,7 +25,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
 
             var expectedEventHandlerRegistrationValidationException =
                 new EventHandlerRegistrationValidationException(
-                    message: "Event validation error occurred, please fix error and try again. ",
+                    message: "Event validation error occurred, please fix error and try again.",
                     innerException: nullEventHandlerException);
 
             // when
@@ -72,7 +72,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
 
             var expectedEventHandlerRegistrationValidationException =
                 new EventHandlerRegistrationValidationException(
-                    invalidEventHandlerRegistrationException);
+                    message: "Event validation error occurred, please fix error and try again.",
+                    innerException: invalidEventHandlerRegistrationException);
 
             // when
             Action addEventHandlerRegistrationAction = () =>
