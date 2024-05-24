@@ -3,7 +3,7 @@
 [![Build](https://github.com/The-Standard-Organization/LeVent/actions/workflows/dotnet.yml/badge.svg)](https://github.com/The-Standard-Organization/LeVent/actions/workflows/dotnet.yml)
 [![Nuget](https://img.shields.io/nuget/v/LeVent?logo=nuget)](https://www.nuget.org/packages/LeVent/)
 ![Nuget](https://img.shields.io/nuget/dt/LeVent?color=blue&label=Downloads)
-[![The Standard](https://img.shields.io/github/v/release/hassanhabib/The-Standard?filter=v2.10.1&style=default&label=Standard%20Version&color=2ea44f)](https://github.com/hassanhabib/The-Standard/tree/2.10.0)
+[![The Standard](https://img.shields.io/github/v/release/hassanhabib/The-Standard?filter=v2.10.1&style=default&label=Standard%20Version&color=2ea44f)](https://github.com/hassanhabib/The-Standard/tree/2.10.1)
 [![The Standard - COMPLIANT](https://img.shields.io/badge/The_Standard-COMPLIANT-2ea44f)](https://github.com/hassanhabib/The-Standard)
 [![The Standard](https://img.shields.io/github/v/release/hassanhabib/The-Standard?filter=v2.9.0&style=default&label=Standard%20Version&color=2ea44f)](https://github.com/hassanhabib/The-Standard)
 [![The Standard Community](https://img.shields.io/discord/934130100008538142?color=%237289da&label=The%20Standard%20Community&logo=Discord)](https://discord.gg/vdPZ7hS52X)
@@ -26,6 +26,7 @@ We are committed to writing ethical and responsible software, and will always st
 We believe that these beliefs will help to ensure that our software(s) are safe and secure and that it will never be used to harm or collect personal data for malicious purposes.
  
 The Standard Community as a promise to you is in upholding these values.
+
 ## How it Works
 Understanding the ideas around the [Cul-De-Sac pattern](https://www.youtube.com/watch?v=Wgz5m0MY9Xo&ab_channel=HassanHabib) is essential for taking advantage of LeVent.
 
