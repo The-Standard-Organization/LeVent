@@ -40,26 +40,18 @@ namespace LeVent.Clients
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
                 throw CreateLeVentValidationException(eventProcessingValidationException);
-                //throw new LeVentValidationException(
-                //    eventProcessingValidationException.InnerException as Xeption);
             }
             catch (EventProcessingDependencyValidationException eventProcessingDependencyValidationException)
             {
                 throw CreateLeVentValidationException(eventProcessingDependencyValidationException);
-                //throw new LeVentValidationException(
-                //    eventProcessingDependencyValidationException.InnerException as Xeption);
             }
             catch (EventProcessingDependencyException eventProcessingDependencyException)
             {
                 throw CreateLeVentDependencyException(eventProcessingDependencyException);
-                //throw new LeVentDependencyException(
-                //    eventProcessingDependencyException.InnerException as Xeption);
             }
             catch (EventProcessingServiceException eventProcessingServiceException)
             {
                 throw CreateLeVentServiceException(eventProcessingServiceException);
-                //throw new LeVentServiceException(
-                //    eventProcessingServiceException.InnerException as Xeption);
             }
         }
 
@@ -72,26 +64,18 @@ namespace LeVent.Clients
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
                 throw CreateLeVentValidationException(eventProcessingValidationException);
-                //throw new LeVentValidationException(
-                //    eventProcessingValidationException.InnerException as Xeption);
             }
             catch (EventProcessingDependencyValidationException eventProcessingDependencyValidationException)
             {
                 throw CreateLeVentValidationException(eventProcessingDependencyValidationException);
-                //throw new LeVentValidationException(
-                //    eventProcessingDependencyValidationException.InnerException as Xeption);
             }
             catch (EventProcessingDependencyException eventProcessingDependencyException)
             {
                 throw CreateLeVentDependencyException(eventProcessingDependencyException);
-                //throw new LeVentDependencyException(
-                //    eventProcessingDependencyException.InnerException as Xeption);
             }
             catch (EventProcessingServiceException eventProcessingServiceException)
             {
                 throw CreateLeVentServiceException(eventProcessingServiceException);
-                //throw new LeVentServiceException(
-                //    eventProcessingServiceException.InnerException as Xeption);
             }
         }
 
