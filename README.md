@@ -134,7 +134,6 @@ These patterns allow for more maintainable standardized systems wholly decoupled
 
 Here's the Low-Level Architecture of this library
 
-
 ![image](https://user-images.githubusercontent.com/1453985/194765922-b5c0f67b-79f0-49b1-80ba-8fffc4546c7c.png)
 
 If you have any suggestions, comments or questions, please feel free to contact me on:
