@@ -40,14 +40,12 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         public static TheoryData DependencyValidationExceptions()
         {
             var nullEventHandlerRegistrationException =
-                new NullEventHandlerRegistrationException(
-                    message: "Event handler is null");
+                new NullEventHandlerRegistrationException();
 
             return new TheoryData<Exception>
             {
                 new EventHandlerRegistrationValidationException(
-                    message: "Event validation error occurred, please fix error and try again.",
-                    innerException: nullEventHandlerRegistrationException)
+                    nullEventHandlerRegistrationException)
             };
         }
 
@@ -58,9 +56,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             return new TheoryData<Exception>
             {
-                new EventHandlerRegistrationServiceException(
-                    message: "Event service error occurred, contact support.",
-                    innerException: someInnerException)
+                new EventHandlerRegistrationServiceException(someInnerException)
             };
         }
 

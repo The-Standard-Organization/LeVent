@@ -26,8 +26,7 @@ namespace LeVent.Services.Foundations.EventRegistrations
         {
             if (eventHandlerRegistration is null)
             {
-                throw new NullEventHandlerRegistrationException(
-                   message: "Event handler is null");
+                throw new NullEventHandlerRegistrationException();
             }
         }
 
@@ -40,8 +39,7 @@ namespace LeVent.Services.Foundations.EventRegistrations
         private static void Validate(params (dynamic Rule, string Parameter)[] validations)
         {
             var invalidEventHandlerRegistrationException =
-                new InvalidEventHandlerRegistrationException(
-                    message: "Invalid event handler registration error ocurred, fix errors and try again.");
+                new InvalidEventHandlerRegistrationException();
 
             foreach ((dynamic rule, string parameter) in validations)
             {

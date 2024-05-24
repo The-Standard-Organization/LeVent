@@ -14,8 +14,7 @@ namespace LeVent.Services.Processings.Events
         {
             if (eventHandler is null)
             {
-                throw new NullEventHandlerProcessingException(
-                    message: "Event handler is null");
+                throw new NullEventHandlerProcessingException();
             }
         }
 
@@ -23,8 +22,7 @@ namespace LeVent.Services.Processings.Events
         {
             if (@event == null)
             {
-                throw new NullEventProcessingException(
-                    message: "Event is null");
+                throw new NullEventProcessingException();
             }
         }
     }
