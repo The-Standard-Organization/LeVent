@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -19,7 +18,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     {
         [Theory]
         [MemberData(nameof(DependencyValidationExceptions))]
-        public void ShouldThrowDependencyValidationExceptionOnAddIfDependencyValidationErrorOccurs(
+        private void ShouldThrowDependencyValidationExceptionOnAddIfDependencyValidationErrorOccurs(
             Xeption dependencyValidationException)
         {
             // given
@@ -31,7 +30,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             var expectedEventProcessingDependencyValidationException =
                 new EventProcessingDependencyValidationException(
-                    dependencyValidationException.InnerException as Xeption);
+                    message: "Event validation error occurred, please fix error and try again.",
+                    innerException: dependencyValidationException.InnerException as Xeption);
 
             this.eventHandlerRegistrationServiceMock.Setup(service =>
                 service.AddEventHandlerRegistation(
@@ -61,7 +61,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
         [Theory]
         [MemberData(nameof(DependencyExceptions))]
-        public void ShouldThrowDependencyExceptionOnAddIfDependencyErrorOccurs(
+        private void ShouldThrowDependencyExceptionOnAddIfDependencyErrorOccurs(
             Xeption dependencyException)
         {
             // given
@@ -73,7 +73,8 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             var expectedEventProcessingDependencyException =
                 new EventProcessingDependencyException(
-                    dependencyException.InnerException as Xeption);
+                    message: "Event error occurred, please fix error and try again.",
+                    innerException: dependencyException.InnerException as Xeption);
 
             this.eventHandlerRegistrationServiceMock.Setup(service =>
                 service.AddEventHandlerRegistation(
@@ -102,7 +103,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         }
 
         [Fact]
-        public void ShouldThrowServiceExceptionOnAddIfServiceErrorOcurrs()
+        private void ShouldThrowServiceExceptionOnAddIfServiceErrorOcurrs()
         {
             // given
             var eventHandlerMock =
@@ -115,11 +116,13 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             var failedEventProcessingServiceException =
                 new FailedEventProcessingServiceException(
-                    serviceException);
+                    message: "Failed event service error ocurred, contact support.",
+                    innerException: serviceException);
 
             var expectedEventServiceException =
                 new EventProcessingServiceException(
-                    failedEventProcessingServiceException);
+                    message: "Event service error occurred, contact support.",
+                    innerException: failedEventProcessingServiceException);
 
             this.eventHandlerRegistrationServiceMock.Setup(service =>
                 service.AddEventHandlerRegistation(

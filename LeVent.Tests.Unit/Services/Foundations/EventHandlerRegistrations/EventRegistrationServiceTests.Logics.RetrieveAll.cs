@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using FluentAssertions;
 using LeVent.Models.Foundations.EventHandlerRegistrations;
@@ -14,7 +13,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
     public partial class EventHandlerRegistrationServiceTests
     {
         [Fact]
-        public void ShouldRetrieveAllEventHandlerRegistrations()
+        private void ShouldRetrieveAllEventHandlerRegistrations()
         {
             // given
             List<EventHandlerRegistration<object>> randomEventHandlerRegistrations =

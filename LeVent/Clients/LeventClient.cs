@@ -39,23 +39,19 @@ namespace LeVent.Clients
             }
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
-                throw new LeVentValidationException(
-                    eventProcessingValidationException.InnerException as Xeption);
+                throw CreateLeVentValidationException(eventProcessingValidationException);
             }
             catch (EventProcessingDependencyValidationException eventProcessingDependencyValidationException)
             {
-                throw new LeVentValidationException(
-                    eventProcessingDependencyValidationException.InnerException as Xeption);
+                throw CreateLeVentValidationException(eventProcessingDependencyValidationException);
             }
             catch (EventProcessingDependencyException eventProcessingDependencyException)
             {
-                throw new LeVentDependencyException(
-                    eventProcessingDependencyException.InnerException as Xeption);
+                throw CreateLeVentDependencyException(eventProcessingDependencyException);
             }
             catch (EventProcessingServiceException eventProcessingServiceException)
             {
-                throw new LeVentServiceException(
-                    eventProcessingServiceException.InnerException as Xeption);
+                throw CreateLeVentServiceException(eventProcessingServiceException);
             }
         }
 
@@ -67,24 +63,41 @@ namespace LeVent.Clients
             }
             catch (EventProcessingValidationException eventProcessingValidationException)
             {
-                throw new LeVentValidationException(
-                    eventProcessingValidationException.InnerException as Xeption);
+                throw CreateLeVentValidationException(eventProcessingValidationException);
             }
             catch (EventProcessingDependencyValidationException eventProcessingDependencyValidationException)
             {
-                throw new LeVentValidationException(
-                    eventProcessingDependencyValidationException.InnerException as Xeption);
+                throw CreateLeVentValidationException(eventProcessingDependencyValidationException);
             }
             catch (EventProcessingDependencyException eventProcessingDependencyException)
             {
-                throw new LeVentDependencyException(
-                    eventProcessingDependencyException.InnerException as Xeption);
+                throw CreateLeVentDependencyException(eventProcessingDependencyException);
             }
             catch (EventProcessingServiceException eventProcessingServiceException)
             {
-                throw new LeVentServiceException(
-                    eventProcessingServiceException.InnerException as Xeption);
+                throw CreateLeVentServiceException(eventProcessingServiceException);
             }
+        }
+
+        private static LeVentValidationException CreateLeVentValidationException(Xeption innerException)
+        {
+            return new LeVentValidationException(
+                message: "LeVent validation error occurred, fix errors and try again.",
+                innerException: innerException);
+        }
+
+        private static LeVentDependencyException CreateLeVentDependencyException(Xeption innerException)
+        {
+            return new LeVentDependencyException(
+                message: "LeVent dependency error occurred, contact support.",
+                innerException: innerException);
+        }
+
+        private static LeVentServiceException CreateLeVentServiceException(Xeption innerException)
+        {
+            return new LeVentServiceException(
+                message: "LeVent service error occurred, fix errors and try again.",
+                innerException: innerException);
         }
     }
 }

@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using LeVent.Models.Foundations.EventHandlerRegistrations;
 using Moq;
 using Xunit;
@@ -12,7 +11,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.EventHandlerRegistrations
     public partial class EventHandlerRegistrationServiceTests
     {
         [Fact]
-        public void ShouldAddEventHandlerRegistration()
+        private void ShouldAddEventHandlerRegistration()
         {
             // given
             EventHandlerRegistration<object> randomEventHandlerRegistration =

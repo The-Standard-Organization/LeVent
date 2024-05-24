@@ -8,7 +8,8 @@ namespace LeVent.Models.Processings.Events.Exceptions
 {
     public class NullEventHandlerProcessingException : Xeption
     {
-        public NullEventHandlerProcessingException()
-            : base("Event handler is null") { }
+        public NullEventHandlerProcessingException(string message)
+            : base(message)
+        { }
     }
 }

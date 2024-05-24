@@ -24,24 +24,26 @@ namespace LeVent.Services.Processings.Events
             }
             catch (NullEventHandlerProcessingException nullEventHandlerProcessingException)
             {
-                throw new EventProcessingValidationException(nullEventHandlerProcessingException);
+                throw CreateEventProcessingValidationException(nullEventHandlerProcessingException);
             }
             catch (EventHandlerRegistrationValidationException eventHandlerRegistrationValidationException)
             {
-                throw new EventProcessingDependencyValidationException(
+                throw CreateEventProcessingDependencyValidationException(
                     eventHandlerRegistrationValidationException.InnerException as Xeption);
             }
             catch (EventHandlerRegistrationServiceException eventHandlerRegistrationServiceException)
             {
-                throw new EventProcessingDependencyException(
+                throw CreateEventProcessingDependencyException(
                     eventHandlerRegistrationServiceException.InnerException as Xeption);
             }
             catch (Exception exception)
             {
                 var failedEventProcessingServiceException =
-                    new FailedEventProcessingServiceException(exception);
+                    new FailedEventProcessingServiceException(
+                            message: "Failed event service error ocurred, contact support.",
+                            innerException: exception);
 
-                throw new EventProcessingServiceException(
+                throw CreateEventProcessingServiceException(
                     failedEventProcessingServiceException);
             }
         }
@@ -54,16 +56,50 @@ namespace LeVent.Services.Processings.Events
             }
             catch (NullEventProcessingException nullEventProcessingException)
             {
-                throw new EventProcessingValidationException(nullEventProcessingException);
+                throw CreateEventProcessingValidationException(nullEventProcessingException);
             }
             catch (Exception exception)
             {
                 var failedEventProcessingServiceException =
-                    new FailedEventProcessingServiceException(exception);
+                    new FailedEventProcessingServiceException(
+                        message: "Failed event service error ocurred, contact support.",
+                        innerException: exception);
 
-                throw new EventProcessingServiceException(
+                throw CreateEventProcessingServiceException(
                     failedEventProcessingServiceException);
             }
+        }
+
+        private static EventProcessingValidationException CreateEventProcessingValidationException(
+            Xeption innerException)
+        {
+            return new EventProcessingValidationException(
+                message: "Event validation error occurred, please fix error and try again.",
+                innerException: innerException);
+        }
+
+        private static EventProcessingDependencyValidationException CreateEventProcessingDependencyValidationException(
+            Xeption innerException)
+        {
+            return new EventProcessingDependencyValidationException(
+                message: "Event validation error occurred, please fix error and try again.",
+                innerException: innerException);
+        }
+
+        private static EventProcessingDependencyException CreateEventProcessingDependencyException(
+            Xeption innerException)
+        {
+            return new EventProcessingDependencyException(
+                message: "Event error occurred, please fix error and try again.",
+                innerException: innerException);
+        }
+
+        private static EventProcessingServiceException CreateEventProcessingServiceException(
+            Xeption innerException)
+        {
+            return new EventProcessingServiceException(
+                message: "Event service error occurred, contact support.",
+                innerException: innerException);
         }
     }
 }

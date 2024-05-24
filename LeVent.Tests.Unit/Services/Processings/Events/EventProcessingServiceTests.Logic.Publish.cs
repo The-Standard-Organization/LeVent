@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
     public partial class EventProcessingServiceTests
     {
         [Fact]
-        public async Task ShouldPublishEventWithoutEventNameAsync()
+        private async Task ShouldPublishEventWithoutEventNameAsync()
         {
             // given
             List<Mock<Func<object, ValueTask>>> randomEventHandlerMocks =
@@ -52,7 +51,7 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         }
 
         [Fact]
-        public async Task ShouldPublishEventWithEventNameAsync()
+        private async Task ShouldPublishEventWithEventNameAsync()
         {
             // given
             string randomEventName = GetRandomEventName();

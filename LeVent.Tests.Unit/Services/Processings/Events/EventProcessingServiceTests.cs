@@ -2,7 +2,6 @@
 // Copyright (c) The Standard Community, a coalition of the Good-Hearted Engineers 
 // -------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +40,14 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
         public static TheoryData DependencyValidationExceptions()
         {
             var nullEventHandlerRegistrationException =
-                new NullEventHandlerRegistrationException();
+                new NullEventHandlerRegistrationException(
+                    message: "Event handler is null");
 
             return new TheoryData<Exception>
             {
                 new EventHandlerRegistrationValidationException(
-                    nullEventHandlerRegistrationException)
+                    message: "Event validation error occurred, please fix error and try again.",
+                    innerException: nullEventHandlerRegistrationException)
             };
         }
 
@@ -57,7 +58,9 @@ namespace LeVent.Tests.Unit.Services.Foundations.Events
 
             return new TheoryData<Exception>
             {
-                new EventHandlerRegistrationServiceException(someInnerException)
+                new EventHandlerRegistrationServiceException(
+                    message: "Event service error occurred, contact support.",
+                    innerException: someInnerException)
             };
         }
 
