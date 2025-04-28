@@ -16,7 +16,7 @@ This library was built according to The Standard. The library follows engineerin
 This library is also a community effort which involved many nights of pair-programming, test-driven development and in-depth exploration research and design discussions.
 
 ## Standard-Promise
-The most important fulfillment aspect in a Standard complaint system is aimed towards contributing to people, its evolution, and principles.
+The most important fulfillment aspect in a Standard compliant system is aimed towards contributing to people, its evolution, and principles.
 An organization that systematically honors an environment of learning, training, and sharing knowledge is an organization that learns from the past, makes calculated risks for the future, 
 and brings everyone within it up to speed on the current state of things as honestly, rapidly, and efficiently as possible. 
  
